@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <!-- favicon -->
-        <link rel="icon" type="image/png" href="public/assets/favicon.png" />
+        <link rel="icon" type="image/png" href="./public/assets/favicon.png" />
         <!-- Custom CSS (Compiled by SASS)-->
         <link href="./public/sass/css/main.css" rel="stylesheet" type="text/css" />
         <!-- Font DM -->
@@ -15,28 +15,44 @@
         />
         <!-- Font Awesome : https://fontawesome.com -->
         <script src="https://kit.fontawesome.com/dcb233c813.js" crossorigin="anonymous"></script>
-        <title>Fisheye</title>
+        <title>Fisheye - photographe</title>
     </head>
     <body>
         <!-- HEADER -->
         <header>
             <!-- Logo -->
-            <a href="index.html">
+            <a href="../../index.html">
                 <img src="./public/assets/medias/logo.png" class="logo" alt="Logo Fisheye" />
             </a>
-            <!-- Title -->
-            <h1>Nos photographes</h1>
         </header>
 
         <!-- MAIN -->
         <main id="main">
-            <!-- Section Photographers -->
-            <section class="photographer_section"></section>
+            <div class="photograph-header">
+                <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+            </div>
         </main>
 
+        <!-- Modal -->
+        <dialog id="contact_modal">
+            <div class="modal">
+                <header>
+                    <h2>Contactez-moi</h2>
+                    <img src="./public/assets/icons/close.svg" onclick="closeModal()" />
+                </header>
+                <form>
+                    <div>
+                        <label>Prénom</label>
+                        <input />
+                    </div>
+                    <button class="contact_button">Envoyer</button>
+                </form>
+            </div>
+        </dialog>
+
         <!-- Scripts JS -->
-        <script src="./src/scripts/models/Photographer.js"></script>
-        <script src="./src/scripts/templates/PhotographerCard.js"></script>
+        <script src="./scripts/pages/photographer.js"></script>
+        <script src="./src/scripts/utils/contactForm.js"></script>
         <script src="./src/scripts/api/Api.js"></script>
         <script src="./src/scripts/api/PhotographerApi.js"></script>
         <script src="./src/scripts/api/MediaApi.js"></script>
