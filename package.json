@@ -1,0 +1,30 @@
+{
+    "name": "fisheye",
+    "description": "OpenClassrooms : Projet 6 - FishEye, plateforme de photographes",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "sass-dev": "sass --watch --update --style=expanded src/sass/scss:src/sass/css",
+        "sass-prod": "sass --no-source-map --style=compressed src/sass/scss:src/sass/css",
+        "format:check": "prettier --check ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/aplainea/FishEye.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/aplainea/FishEye/issues"
+    },
+    "homepage": "https://github.com/aplainea/FishEye#readme",
+    "dependencies": {
+        "sass": "^1.56.0"
+    },
+    "devDependencies": {
+        "eslint": "^8.27.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "prettier": "^2.7.1"
+    }
+}

@@ -1,21 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <!-- Custom CSS (Compiled by SASS)-->
+    <link href="./src/sass/css/main.css" rel="stylesheet" type="text/css" />
+    <!-- Font DM -->
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome : https://fontawesome.com -->
+    <script
+      src="https://kit.fontawesome.com/dcb233c813.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Fisheye</title>
   </head>
   <body>
+    <!-- HEADER -->
     <header>
-        <img src="assets/images/logo.png" class="logo" />
-        <h1>Nos photographes</h1>
+      <!-- Logo -->
+      <a href="index.html">
+        <img src="./assets/medias/logo.png" class="logo" alt="Logo Fisheye" />
+      </a>
+      <!-- Title -->
+      <h1>Nos photographes</h1>
     </header>
+
+    <!-- MAIN -->
     <main id="main">
-        <div class="photographer_section"></div>
+      <!-- Section Photographers -->
+      <section class="photographer_section"></section>
     </main>
-    <script src="scripts/factories/photographer.js"></script>
-    <script src="scripts/pages/index.js"></script>
+
+    <!-- Scripts JS -->
+    <script src="./src/scripts/models/Photographer.js"></script>
+    <script src="./src/scripts/templates/PhotographerCard.js"></script>
+    <script src="./src/scripts/api/Api.js"></script>
+    <script src="./src/scripts/api/PhotographerApi.js"></script>
+    <script src="./src/scripts/api/MediaApi.js"></script>
+    <script src="./src/scripts/App.js"></script>
   </body>
 </html>
