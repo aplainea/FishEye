@@ -4,7 +4,7 @@ class PhotographerApi extends Api {
     }
 
     // Get all photographers
-    async getPhotographers() {
+    async getAllPhotographers() {
         try {
             const data = await this.get();
             return data.photographers;
@@ -14,12 +14,8 @@ class PhotographerApi extends Api {
     }
 
     // get a photographer
-    async getPhotographer(photographerId) {
-        try {
-            const data = await this.get();
-            return data.photographers.find((e) => e.id === photographerId);
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    // async getOnePhotographer(photographerId) {
+    //     const data = await this.get();
+    //     return data.photographers.find((e) => e.id === photographerId);
+    // }
 }

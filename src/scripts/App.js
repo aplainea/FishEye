@@ -1,36 +1,44 @@
-// url path to data "photographers.json"
-const pathData = '../data/photographers.json';
+/**
+ * "#" private
+ * "_" protected
+ */
 
 class App {
     constructor() {
         // Section with all photographers profiles
         this.$photographersSection = document.querySelector('.photographer_section');
-        // Create MediaApi to get data media
-        this._mediaApi = new MediaApi(pathData);
         // Create PhotographerApi to get data Photographer
-        this._photographerApi = new PhotographerApi(pathData);
+        this._photographerApi = new PhotographerApi('../../src/data/photographers.json');
+        // Create MediaApi to get data media
+        // this._mediaApi = new MediaApi('../../src/data/photographers.json');
     }
 
     // Home Page
-    homePage() {
+    async homePage() {
         // Get all photographers data
-        const data = this._photographerApi.getPhotographers;
+        const allPhotographersData = await this._photographerApi.getAllPhotographers();
 
-        data
-            // Create Photographer
-            .map((photographer) => new Photographer(photographer))
-            // For each phtotographer, create profile
-            .forEach((photographer) => {
-                const template = new PhotographerProfile(photographer);
-                // Add photographer profil on section
-                this.$photographersSection.appendChild(template.createPhotographerProfile());
-            });
+        // All photographers data
+        console.log('===[ All photographers data ]===');
+        console.log(allPhotographersData);
+
+        // Use Factory
+        const Photographers = allPhotographersData.map(
+            (photographer) => new PhotographersFactory(photographer, 'PhotographerApi'),
+        );
+
+        // Create all PhotographerCard
+        Photographers.forEach((photographer) => {
+            const Template = new PhotographerCard(photographer);
+            this.$photographersSection.appendChild(Template.createPhotographerCard());
+        });
     }
 
     // Photographer Page
-    async photographerPage() {
-        // use PhotographerFactory for media: Image or Video
-    }
+    // photographerPage() {
+    //     // use PhotographerFactory for media: Image or Video
+    //     console.log('profil');
+    // }
 }
 
 // Create App "FishEye"
@@ -44,9 +52,9 @@ switch (currentPage) {
         app.homePage();
         break;
     // Photographer Page
-    case '/photographer.html':
-        app.photographerPage();
-        break;
+    // case '/src/pages/photographer.html':
+    //     app.photographerPage();
+    //     break;
     // Default page (if error, etc.) --> return to Home Page
     default:
         app.homePage();
