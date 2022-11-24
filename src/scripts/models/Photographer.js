@@ -34,6 +34,6 @@ class Photographer {
         return `${this._price}€/jour`;
     }
     get portrait() {
-        return `${this._portrait}`;
+        return `public/assets/photographers/${this._portrait}`;
     }
 }

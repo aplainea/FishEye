@@ -1,24 +1,65 @@
-.photographer_section {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 70px;
-  margin-top: 100px;
-}
+.photographer {
+    &__section {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 70px;
+        margin-top: 100px;
 
-.photographer_section article {
-  justify-self: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
+        & article {
+            justify-self: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
 
-.photographer_section article h2 {
-  color: #d3573c;
-  font-size: 36px;
-}
+            & a {
+                text-decoration: none;
+            }
 
-.photographer_section article img {
-  height: 200px;
-  width: 200px;
+            & img {
+                height: 200px;
+                width: 200px;
+                border-radius: 50%;
+                object-fit: cover;
+                box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+                margin-bottom: 20px;
+            }
+
+            & h2 {
+                color: $secondary;
+                text-align: center;
+            }
+        }
+    }
+
+    &__card {
+        &--link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        &--subcontainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        &--place {
+            font-size: 13px;
+            line-height: 16.93px;
+            color: rgba(144, 28, 28, 1);
+        }
+
+        &--tagline {
+            font-size: 10px;
+            line-height: 13.02px;
+        }
+
+        &--dailyprice {
+            font-size: 9px;
+            line-height: 11.72px;
+            color: rgba(117, 117, 117, 1);
+        }
+    }
 }

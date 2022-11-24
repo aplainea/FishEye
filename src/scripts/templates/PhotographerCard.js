@@ -8,18 +8,18 @@ class PhotographerCard {
 
         const photographerCard = `
         <!-- Photographer Card -->
-        <a href="../../pages/photographer.html?id=${this._photographer.id}" aria-label="vers la page du photographe ${this._photographer.name}">
-            <!-- Profile -->
-            <div>
-                <img src="../../../public/assets/photographers/${this._photographer.portrait}" alt="Profile de ${this._photographer.name}">
-                <h2>${this._photographer.name}</h2>
+        <article class="photographer__card">
+            <a href="src/pages/photographer.html?id=${this._photographer.id}" aria-label="vers la page du photographe ${this._photographer.name}" class="photographer__card--link">
+                <!-- Profile -->
+                <img src="${this._photographer.portrait}" alt="Portrait de ${this._photographer.name}" class="photographer__card--avatar">
+                <h2 class="photographer__card--name">${this._photographer.name}</h2>
+            </a>
+            <div class="photographer__card--subcontainer">
+                <h3 class="photographer__card--place">${this._photographer.place}</h3>
+                <p class="photographer__card--tagline">${this._photographer.tagline}</p>
+                <p class="photographer__card--dailyprice">${this._photographer.dailyPrice}</p>
             </div>
-        </a>
-        <div>
-            <h3>${this._photographer.place}</h3>
-            <p>${this._photographer.tagline}</p>
-            <p>${this._photographer.dailyPrice}</p>
-        </div>
+        </article>
         
         `;
 

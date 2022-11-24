@@ -1,8 +1,14 @@
 body {
-  font-family: "DM Sans", sans-serif;
+    font-family: 'DM Sans', sans-serif;
 }
 
 h1 {
-  color: $primary;
-  margin-right: 100px;
+    color: $primary;
+    margin-right: 100px;
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 46.87px;
 }
