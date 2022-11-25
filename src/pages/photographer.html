@@ -67,8 +67,6 @@
             <form
                 id="modal__form--contact"
                 name="Modal form contact"
-                action="photographer.html"
-                method="POST"
                 onsubmit="validationFormContact(event)"
             >
                 <!-- firstname -->
@@ -99,13 +97,27 @@
                     <input id="email" name="email" type="email" class="text_control" required />
                 </div>
                 <!-- message -->
-                <div id="message_data" aria-label="Votre message" class="formData input-control">
-                    <label for="message">Votre message</label>
-                    <textarea id="message" name="message" class="text_control" required></textarea>
+                <div
+                    id="messageContact_data"
+                    aria-label="Votre message"
+                    class="formData input-control"
+                >
+                    <label for="messageContact">Votre message</label>
+                    <textarea
+                        id="messageContact"
+                        name="messageContact"
+                        class="text_control"
+                        required
+                    ></textarea>
                 </div>
                 <!-- submit -->
                 <div aria-label="Envoyer">
-                    <input type="submit" value="Envoyer" id="valid-btn" class="button" />
+                    <input
+                        type="submit"
+                        value="Envoyer"
+                        id="valid-btn"
+                        class="button modal__contact--submit"
+                    />
                 </div>
             </form>
         </dialog>
@@ -116,6 +128,7 @@
         <!-- Models -->
         <script src="../../src/scripts/models/Photographer.js"></script>
         <!-- Template -->
+        <script src="../../src/scripts/templates/PhotographerCard.js"></script>
         <script src="../../src/scripts/templates/PhotographerPage.js"></script>
         <!-- Api -->
         <script src="../../src/scripts/api/Api.js"></script>

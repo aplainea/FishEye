@@ -6,18 +6,17 @@ const modalContact = document.getElementById('modal__contact');
 const modalContactTitle = document.querySelector('.modal header h2');
 const modalContactButton = document.querySelector('.photographer__contact--btn');
 const modalContactClose = document.querySelector('.modal__contact--close');
-const modalContactValidButton = document.querySelector('#valid-btn');
+const modalContactValidButton = document.querySelector('.modal__contact--submit');
 
 // Form elements
 const modalFormContact = document.querySelector('form');
 const firstName = document.getElementById('firstname');
 const lastName = document.getElementById('lastname');
 const email = document.getElementById('email');
-const message = document.getElementById('message');
+const messageContact = document.getElementById('messageContact');
 
 // Regex : https://regexr.com
 const regexTextOnly = new RegExp(/^[^\s][a-zA-ZÀ-ȕ\s]{1,}$/);
-const regexTextarea = new RegExp(/^[^\s][a-zA-ZÀ-ȕ0-9\s]{1,}$/);
 const regexEMail = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
 
 ///--- FUNCTIONS
@@ -48,9 +47,6 @@ function closeModalContact() {
     modalContact.setAttribute('aria-hidden', 'true');
     // Hidden modal
     modalContact.style.display = 'none';
-    $contactButton.focus();
-
-    modalContact.style.display = 'none';
 }
 
 // Validation form contact
@@ -65,8 +61,17 @@ function validationFormContact(event) {
         firstname: validText(firstName),
         lastname: validText(lastName),
         email: validEmail(email),
-        message: validTextarea(message),
+        messageContact: validText(messageContact),
     };
+
+    // Show on console result form
+    console.log('===[ Données du formulaire de contact ]===');
+    console.log('Validation Data: ', results);
+    console.log('Prénom: ', firstName.value);
+    console.log('Nom: ', lastName.value);
+    console.log('Email: ', email.value);
+    console.log('Message: ', messageContact.value);
+    console.log('===[ -------------------------------- ]===');
 
     // Checks if all results was true
     if (Object.values(results).every((e) => e == true)) {
@@ -91,12 +96,12 @@ function validText(text) {
     let messageError = 'Veuillez saisir un texte valide.';
 
     // Check if text have more than two caracters
-    if (text.value.trim().length <= 2) {
+    if (text.value.trim().length < 2) {
         messageError = 'Veuillez entrer deux caractères ou plus';
     }
 
     // Checks if regexText is valid
-    return regexTextOnly.test(text.value) && text.value.trim().length <= 2
+    return regexTextOnly.test(text.value) && text.value.trim().length >= 2
         ? true
         : { element: text.parentNode, messageError: messageError };
 }
@@ -111,21 +116,6 @@ function validEmail(email) {
         : { element: email.parentNode, messageError: messageError };
 }
 
-// Checks valid textarea (text + number)
-function validTextarea(text) {
-    let messageError = 'Veuillez saisir du texte valide.';
-
-    // Check if text have more than two caracters
-    if (text.value.trim().length <= 2) {
-        messageError = 'Veuillez entrer deux caractères ou plus';
-    }
-
-    // Checks if regexText is valid
-    return regexTextarea.test(text.value) && text.value.trim().length <= 2
-        ? true
-        : { element: text.parentNode, messageError: messageError };
-}
-
 // Show error message
 function showError(element, messageError) {
     // create balise p HTML with message error and add error class style
@@ -136,7 +126,7 @@ function showError(element, messageError) {
     // Check if element is a input
     if (element.classList.contains('input-control')) {
         // Add red border style
-        element.querySelector('.text-control').style.borderColor = 'red';
+        element.querySelector('.text_control').style.borderColor = 'red';
     }
 
     // add this message error at end of element
@@ -159,29 +149,27 @@ function resetFormContact() {
     firstName.value = '';
     lastName.value = '';
     email.value = '';
-    message.value = '';
+    messageContact.value = '';
 }
 
 // Show Validation modal
 function validationModalContact() {
     // Close button
-    modalContactValidButton.addEventListener('click', () => {
-        // valid submit form
-        modalFormContact.submit();
-        // reset form
-        resetFormContact();
-    });
+    // valid submit form
+    //modalFormContact.submit();
+    // reset form
+    resetFormContact();
+    // close modal
+    closeModalContact();
 }
 
 ///--- Event Listener
 
 // Close modal event
+// Icon close
 modalContactClose.addEventListener('click', closeModalContact);
 modalContactClose.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         closeModalContact();
     }
 });
-
-// Submit modal form
-modalFormContact.addEventListener('submit', validationFormContact);

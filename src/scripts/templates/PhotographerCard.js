@@ -20,7 +20,6 @@ class PhotographerCard {
                 <p class="photographer__card--dailyprice">${this._photographer.dailyPrice}</p>
             </div>
         </article>
-        
         `;
 
         article.innerHTML = photographerCard;
