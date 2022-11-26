@@ -1,20 +1,20 @@
 @charset "utf-8";
 
-@import "./utils/variables";
-@import "./utils/mixins";
-@import "./utils/animations";
+@import './utils/variables';
+@import './utils/mixins';
+@import './utils/animations';
 
-@import "./base/reset";
-@import "./base/base";
-@import "./base/typography";
+@import './base/reset';
+@import './base/base';
+@import './base/typography';
 
-@import "./components/buttons";
-@import "./components/dropdown";
-@import "./components/likes";
-@import "./components/logo";
+@import './components/buttons';
+@import './components/dropdown';
+@import './components/form';
+@import './components/likes';
+@import './components/modal';
 
-@import "./layout/contact_modal";
-@import "./layout/gallery";
-@import "./layout/home";
-@import "./layout/lightbox-modal";
-@import "./layout/profile";
+@import './layout/contact-modal';
+@import './layout/home';
+@import './layout/lightbox-modal';
+@import './layout/profile';

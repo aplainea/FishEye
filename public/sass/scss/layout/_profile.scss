@@ -3,20 +3,20 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 70px;
-        margin-top: 100px;
+        margin-top: 60px;
 
-        & article {
+        article {
             justify-self: center;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
 
-            & a {
+            a {
                 text-decoration: none;
             }
 
-            & img {
+            img {
                 height: 200px;
                 width: 200px;
                 border-radius: 50%;
@@ -25,7 +25,7 @@
                 margin-bottom: 20px;
             }
 
-            & h2 {
+            h2 {
                 color: $secondary;
                 text-align: center;
             }
@@ -60,6 +60,104 @@
             font-size: 9px;
             line-height: 11.72px;
             color: rgba(117, 117, 117, 1);
+        }
+    }
+
+    &__page {
+        &--headcontainer {
+            height: 300px;
+            background-color: $light;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-content: center;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 50px;
+        }
+
+        &--presentation {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: space-evenly;
+            align-items: flex-start;
+
+            h1 {
+                color: $secondary;
+            }
+        }
+        &--place {
+            color: $primary;
+            font-family: 'DM Sans', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 31px;
+        }
+        &--tagline {
+            color: $gray;
+            font-family: 'DM Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 23px;
+        }
+
+        &--avatar {
+            padding: 10px;
+
+            img {
+                height: 200px;
+                width: 200px;
+                border-radius: 50%;
+                object-fit: cover;
+                box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+            }
+        }
+    }
+
+    &__filter {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 20px;
+
+        label {
+            margin-right: 25px;
+        }
+    }
+
+    &__portfolio {
+        &--media {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+
+            article {
+                margin-bottom: 20px;
+            }
+        }
+
+        &--img,
+        &--video {
+            height: 300px;
+            width: 350px;
+            object-fit: cover;
+        }
+
+        &--subcontainer {
+            h2 {
+                font-size: 24px;
+                font-weight: 400;
+                line-height: 31px;
+                color: $primary;
+            }
         }
     }
 }

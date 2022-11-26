@@ -5,55 +5,44 @@ class PhotographerPage {
 
     createPhotographerPage() {
         const photographerPage = `
-        <!-- Photographer Page -->
-        <div>
-            <!-- Photographer presentation -->
-            <div>
-                <div>
-                    <h1>${this._photographer.name}</h1>
-                    <p>${this._photographer.place}</p>
-                    <p>${this._photographer.tagline}</p>
+            <!-- Photographer Page -->
+                <div class="photographer__page--headcontainer">
+                    <!-- Photographer presentation -->
+                    <div class="photographer__page--presentation">
+                        <h1>${this._photographer.name}</h1>
+                        <p class="photographer__page--place">${this._photographer.place}</p>
+                        <p class="photographer__page--tagline">${this._photographer.tagline}</p>
+                    </div>
+                    <!-- Photographer contact -->
+                    <div class="photographer__page--contact">
+                        <button class="photographer__contact--btn FE-button">Contacter-moi</button>
+                    </div>
+                    <!-- Photographer avatar -->
+                    <div class="photographer__page--avatar">
+                        <img src="../../../${this._photographer.portrait}" alt="Portrait de ${this._photographer.name}">
+                    </div>
                 </div>
-                <!-- Photographer contact -->
-                <div>
-                    <button class="photographer__contact--btn">Contacter-moi</button>
-                </div>
-                <!-- Photographer avatar -->
-                <div>
-                    <img src="../../../${this._photographer.portrait}" alt="Portrait de ${this._photographer.name}">
-                </div>
-            </div>
-            
-            <!-- Photographer portfolio -->
-            <div>
+                
                 <!-- Photographer filter -->
-                <div>
-                    <p>Trier par</p>
-                    <!-- Photographer filter select -->
-                    <div>
-                        <div role="button" aria-label="Filtrer par ..." aria-haspopup="true" aria-expanded="false" aria-selected="true">
-                            <p>Popularité</p>
+                <div class="photographer__filter">
+                    <label class="photographer__filter--label">Trier par</label>
+                    <div class="photographer__filter--menu">
+                        <div class="photographer__filter--list" role="button" tabindex="0" aria-label="trier les médias par ..."
+                            aria-haspopup="true" aria-expanded="false" aria-selected="true">
+                            <p class="photographer__filter--active">Popularité</p>
                             <i class="fa-solid fa-angle-down"></i>
                             <i class="fa-solid fa-angle-up"></i>
                         </div>
-                        <!-- Popularité -->
-                        <div>
-                            <button value="popularity" role="listbox" aria-label="Filtre par popularité" aria-selected="true">Popularité</button>
+                        <div class="photographer__filter--hidden">
+                            <button class="photographer__filter--option" value="popularity" role="listbox" tabindex="0" aria-label="tri des médias par popularité"
+                                aria-selected="true">Popularité</button>
                         </div>
-                        <!-- Date -->
-                        <div>
-                            <button value="date" role="listbox" aria-label="Filtre par date" aria-selected="false">Date</button>
-                        </div>
-                        <!-- Titre -->
-                        <div>
-                            <button value="title" role="listbox" aria-label="Filtre par titre" aria-selected="false">Titre</button>
-                        </div>
+                        <button class="photographer__filter--option" value="date" role="listbox" tabindex="0" aria-label="tri des médias par date"
+                            aria-selected="false">Date</button>
+                        <button class="photographer__filter--option" value="title" role="listbox" tabindex="0" aria-label="tri des médias par titre"
+                            aria-selected="false">Titre</button>
                     </div>
                 </div>
-                <!-- Photographer medias -->
-                <section class="photographer__portfolio--medias"></section>
-            </div>
-        </div>
         `;
 
         return photographerPage;

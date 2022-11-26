@@ -1,9 +1,13 @@
+/**
+ * TODO:
+ *  - Style Select Filter
+ *  - Update data with Filter
+ *  - Style Contact Modal
+ *  - Add Like img/video
+ *  - Add aside like
+ *  - Add more accessibility on templates
+ */
 class App {
-    /**
-     * "#" private
-     * "_" protected
-     * "$" variable
-     */
     constructor() {
         // Section with all photographers profiles
         this.$photographersSection = document.querySelector('.photographer__section');
@@ -12,8 +16,10 @@ class App {
         // Create PhotographerApi to get data Photographer
         this._photographerApi = new PhotographerApi('../../src/data/photographers.json');
 
+        // Section will all media by photographer
+        this.$mediaSection = document.querySelector('.photographer__portfolio--media');
         // Create MediaApi to get data media
-        // this._mediaApi = new MediaApi('../../src/data/photographers.json');
+        this._mediaApi = new MediaApi('../../src/data/photographers.json');
     }
 
     // Home Page
@@ -50,7 +56,7 @@ class App {
         const parametersURL = new URL(document.location).searchParams;
         const photographerID = parseInt(parametersURL.get('id'));
         // Init message error
-        const messageError = "Erreur URL: L'ID du photographe n'existe pas, ou n'est pas la bonne.";
+        const messageError = "Erreur: L'ID du photographe n'existe pas, ou n'est pas la bonne.";
 
         // Check if ID
         if (photographerID) {
@@ -80,6 +86,35 @@ class App {
                         showModalContact(Photographer);
                     }
                 });
+
+                // All Media data by Photographer
+                const mediaData = await this._mediaApi.getAllMediaByPhotographer(photographerID);
+
+                // Check if we have media data
+                if (mediaData) {
+                    // Use Factory (manage media: Image or Video)
+                    const Media = new MediaFactory(mediaData, 'PhotographerApi');
+
+                    console.log('===[ Media Photographer data ]===');
+                    console.log(Media);
+
+                    // Create all PhotographerCard
+                    Media.forEach((media) => {
+                        if (media instanceof Image) {
+                            const imageTemplate = new ImageCard(media);
+                            this.$mediaSection.appendChild(imageTemplate.createImageCard());
+                        } else if (media instanceof Video) {
+                            const videoTemplate = new VideoCard(media);
+                            this.$mediaSection.appendChild(videoTemplate.createVideoCard());
+                        }
+                    });
+                } else {
+                    // Error
+                    this.alertError(messageError);
+                }
+
+                // Filter
+                // ...
             } else {
                 // Error
                 this.alertError(messageError);

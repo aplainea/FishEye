@@ -3,23 +3,13 @@ class MediaApi extends Api {
         super(url);
     }
 
-    // Get all medias
-    // async getMedias() {
-    //     try {
-    //         const data = await this.get();
-    //         return data.photograpers;
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
-
     // Get all data media by photographer
-    // async getMedia(photograperId) {
-    //     try {
-    //         const data = await this.get();
-    //         return data.media.filter((e) => e.photograperId === photograperId);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
+    async getAllMediaByPhotographer(photographerId) {
+        try {
+            const data = await this.get();
+            return data.media.filter((e) => e.photographerId === photographerId);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }

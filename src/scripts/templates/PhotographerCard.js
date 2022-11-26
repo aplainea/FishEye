@@ -8,7 +8,7 @@ class PhotographerCard {
 
         const photographerCard = `
         <!-- Photographer Card -->
-        <article class="photographer__card">
+        <div class="photographer__card">
             <a href="src/pages/photographer.html?id=${this._photographer.id}" aria-label="vers la page du photographe ${this._photographer.name}" class="photographer__card--link">
                 <!-- Profile -->
                 <img src="${this._photographer.portrait}" alt="Portrait de ${this._photographer.name}" class="photographer__card--avatar">
@@ -19,7 +19,7 @@ class PhotographerCard {
                 <p class="photographer__card--tagline">${this._photographer.tagline}</p>
                 <p class="photographer__card--dailyprice">${this._photographer.dailyPrice}</p>
             </div>
-        </article>
+        </div>
         `;
 
         article.innerHTML = photographerCard;
