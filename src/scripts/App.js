@@ -105,7 +105,11 @@ class App {
                 }
 
                 // Filter
-                // ...
+
+                // Filter select
+                const filterSelect = document.querySelector('.photographer__filter--select');
+                // Show select with option when event on click
+                filterSelect.addEventListener('click', () => showModalFilter());
             } else {
                 // Error
                 this.alertError(messageError);

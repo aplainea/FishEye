@@ -31,6 +31,61 @@
             <div class="photographer__page">
                 <!-- Photogapher page here -->
             </div>
+
+            <!-- Photographer filter -->
+            <div class="photographer__filter">
+                <label class="photographer__filter--label">Trier par</label>
+                <!-- Default option -->
+                <div
+                    class="photographer__filter--select FE-button"
+                    role="button"
+                    tabindex="0"
+                    aria-label="trier les médias par ..."
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-selected="true"
+                >
+                    <p class="photographer__filter--active">Popularité</p>
+                    <i class="fa-solid fa-angle-down"></i>
+                </div>
+                <!-- All options -->
+                <div class="photographer__filter--menu FE-button">
+                    <div
+                        id="filter-popularite"
+                        class="photographer__filter--option FE-button"
+                        role="listbox"
+                        tabindex="0"
+                        aria-label="tri des médias par popularité"
+                        aria-selected="true"
+                    >
+                        <p class="photographer__filter--optionname">Popularité</p>
+                        <i class="fa-solid fa-angle-up"></i>
+                    </div>
+                    <div class="photographer__filter--separator"></div>
+                    <div
+                        id="filter-date"
+                        class="photographer__filter--option FE-button"
+                        role="listbox"
+                        tabindex="0"
+                        aria-label="tri des médias par date"
+                        aria-selected="false"
+                    >
+                        <p class="photographer__filter--optionname">Date</p>
+                    </div>
+                    <div class="photographer__filter--separator"></div>
+                    <div
+                        id="filter-titre"
+                        class="photographer__filter--option FE-button"
+                        role="listbox"
+                        tabindex="0"
+                        aria-label="tri des médias par titre"
+                        aria-selected="false"
+                    >
+                        <p class="photographer__filter--optionname">Titre</p>
+                    </div>
+                </div>
+            </div>
+
             <!-- Photographer medias -->
             <section class="photographer__portfolio--media">
                 <!-- All media -->
