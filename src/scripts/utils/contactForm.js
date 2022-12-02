@@ -3,6 +3,7 @@ const body = document.getElementById('body');
 const header = document.getElementById('header');
 const main = document.getElementById('main');
 const modalContact = document.getElementById('modal__contact');
+const modalBackground = document.querySelector('.modal__background');
 const modalContactTitle = document.querySelector('.modal header h2');
 const modalContactButton = document.querySelector('.photographer__contact--btn');
 const modalContactClose = document.querySelector('.modal__contact--close');
@@ -33,6 +34,7 @@ function showModalContact(photographer) {
     modalContactTitle.innerHTML = `Contactez-moi<br>${photographer.name}`;
     // Show modal
     modalContact.style.display = 'block';
+    modalBackground.style.display = 'block';
     // Make focus on input firstname
     firstName.focus();
 }
@@ -47,6 +49,7 @@ function closeModalContact() {
     modalContact.setAttribute('aria-hidden', 'true');
     // Hidden modal
     modalContact.style.display = 'none';
+    modalBackground.style.display = 'none';
 }
 
 // Validation form contact
@@ -64,17 +67,16 @@ function validationFormContact(event) {
         messageContact: validText(messageContact),
     };
 
-    // Show on console result form
-    console.log('===[ Données du formulaire de contact ]===');
-    console.log('Validation Data: ', results);
-    console.log('Prénom: ', firstName.value);
-    console.log('Nom: ', lastName.value);
-    console.log('Email: ', email.value);
-    console.log('Message: ', messageContact.value);
-    console.log('===[ -------------------------------- ]===');
-
     // Checks if all results was true
     if (Object.values(results).every((e) => e == true)) {
+        // Show on console result form
+        console.log('===[ Données du formulaire de contact ]===');
+        console.log('Validation Data: ', results);
+        console.log('Prénom: ', firstName.value);
+        console.log('Nom: ', lastName.value);
+        console.log('Email: ', email.value);
+        console.log('Message: ', messageContact.value);
+        console.log('===[ -------------------------------- ]===');
         // Switch to validation Modal
         validationModalContact();
     } else {
@@ -126,7 +128,7 @@ function showError(element, messageError) {
     // Check if element is a input
     if (element.classList.contains('input-control')) {
         // Add red border style
-        element.querySelector('.text_control').style.borderColor = 'red';
+        element.querySelector('.text_control').style.borderColor = 'rgb(144, 28, 28)';
     }
 
     // add this message error at end of element
@@ -140,12 +142,17 @@ function hiddenError() {
     Array.from(allError).map((e) => e.remove());
 
     // remove red border
-    let allInput = document.querySelectorAll('.text-control');
+    let allInput = document.querySelectorAll('.text_control');
     Array.from(allInput).map((e) => (e.style.borderColor = 'green'));
 }
 
 // reset form
 function resetFormContact() {
+    //reset style border input
+    let allInput = document.querySelectorAll('.text_control');
+    Array.from(allInput).map((e) => (e.style.borderColor = 'transparent'));
+
+    // reset form
     firstName.value = '';
     lastName.value = '';
     email.value = '';
@@ -161,6 +168,7 @@ function validationModalContact() {
     resetFormContact();
     // close modal
     closeModalContact();
+    alert('Message bien envoyé.');
 }
 
 ///--- Event Listener

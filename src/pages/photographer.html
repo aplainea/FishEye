@@ -38,93 +38,95 @@
         </main>
 
         <!-- Modal Contact -->
-        <dialog
-            id="modal__contact"
-            aria-hidden="true"
-            aria-label="Contact le/la photographe"
-            class="modal"
-        >
-            <!-- Modal header -->
-            <header>
-                <!-- Modal header title -->
-                <h2></h2>
-                <!-- Modal header close -->
-                <div aria-label="Bouton pour fermer la modale de contact">
-                    <svg
-                        class="modal__contact--close"
-                        width="42"
-                        height="42"
-                        viewBox="0 0 42 42"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <title>Fermer</title>
-                        <desc>Bouton pour fermer la modale de contact</desc>
-                        <path
-                            d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z"
-                            fill="white"
-                        />
-                    </svg>
-                </div>
-            </header>
-            <!-- Modal form -->
-            <form
-                id="modal__form--contact"
-                name="Modal form contact"
-                onsubmit="validationFormContact(event)"
+        <div class="modal__background">
+            <dialog
+                id="modal__contact"
+                aria-hidden="true"
+                aria-label="Contact le/la photographe"
+                class="modal"
             >
-                <!-- firstname -->
-                <div id="firstname_data" aria-label="Prénom" class="formData input-control">
-                    <label for="firstname">Prénom</label>
-                    <input
-                        id="firstname"
-                        name="firstname"
-                        type="text"
-                        class="text_control"
-                        required
-                    />
-                </div>
-                <!-- lastname -->
-                <div id="lastname_data" aria-label="Nom" class="formData input-control">
-                    <label for="lastname">Nom</label>
-                    <input
-                        id="lastname"
-                        name="lastname"
-                        type="text"
-                        class="text_control"
-                        required
-                    />
-                </div>
-                <!-- email -->
-                <div id="email_data" aria-label="Email" class="formData input-control">
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="email" class="text_control" required />
-                </div>
-                <!-- message -->
-                <div
-                    id="messageContact_data"
-                    aria-label="Votre message"
-                    class="formData input-control"
+                <!-- Modal header -->
+                <header>
+                    <!-- Modal header title -->
+                    <h2></h2>
+                    <!-- Modal header close -->
+                    <div aria-label="Bouton pour fermer la modale de contact">
+                        <svg
+                            class="modal__contact--close"
+                            width="42"
+                            height="42"
+                            viewBox="0 0 42 42"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <title>Fermer</title>
+                            <desc>Bouton pour fermer la modale de contact</desc>
+                            <path
+                                d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z"
+                                fill="white"
+                            />
+                        </svg>
+                    </div>
+                </header>
+                <!-- Modal form -->
+                <form
+                    id="modal__form--contact"
+                    name="Modal form contact"
+                    onsubmit="validationFormContact(event)"
                 >
-                    <label for="messageContact">Votre message</label>
-                    <textarea
-                        id="messageContact"
-                        name="messageContact"
-                        class="text_control"
-                        required
-                    ></textarea>
-                </div>
-                <!-- submit -->
-                <div aria-label="Envoyer">
-                    <input
-                        type="submit"
-                        value="Envoyer"
-                        id="valid-btn"
-                        class="button modal__contact--submit"
-                    />
-                </div>
-            </form>
-        </dialog>
+                    <!-- firstname -->
+                    <div id="firstname_data" aria-label="Prénom" class="formData input-control">
+                        <label for="firstname">Prénom</label>
+                        <input
+                            id="firstname"
+                            name="firstname"
+                            type="text"
+                            class="text_control"
+                            required
+                        />
+                    </div>
+                    <!-- lastname -->
+                    <div id="lastname_data" aria-label="Nom" class="formData input-control">
+                        <label for="lastname">Nom</label>
+                        <input
+                            id="lastname"
+                            name="lastname"
+                            type="text"
+                            class="text_control"
+                            required
+                        />
+                    </div>
+                    <!-- email -->
+                    <div id="email_data" aria-label="Email" class="formData input-control">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" class="text_control" required />
+                    </div>
+                    <!-- message -->
+                    <div
+                        id="messageContact_data"
+                        aria-label="Votre message"
+                        class="formData input-control"
+                    >
+                        <label for="messageContact">Votre message</label>
+                        <textarea
+                            id="messageContact"
+                            name="messageContact"
+                            class="text_control"
+                            required
+                        ></textarea>
+                    </div>
+                    <!-- submit -->
+                    <div aria-label="Envoyer">
+                        <input
+                            type="submit"
+                            value="Envoyer"
+                            id="valid-btn"
+                            class="modal__contact--submit FE-button"
+                        />
+                    </div>
+                </form>
+            </dialog>
+        </div>
 
         <!-- JAVASCRIPT -->
         <!-- Factories -->

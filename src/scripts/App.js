@@ -1,12 +1,3 @@
-/**
- * TODO:
- *  - Style Select Filter
- *  - Update data with Filter
- *  - Style Contact Modal
- *  - Add Like img/video
- *  - Add aside like
- *  - Add more accessibility on templates
- */
 class App {
     constructor() {
         // Section with all photographers profiles
