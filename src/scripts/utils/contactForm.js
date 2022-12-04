@@ -42,7 +42,7 @@ function showModalContact(photographer) {
 // Close modal contact
 function closeModalContact() {
     // Remove disable scroll on body when modal is open
-    body.classList.add('no-scroll');
+    body.classList.remove('no-scroll');
     // Change attribute hidden
     header.setAttribute('aria-hidden', 'false');
     main.setAttribute('aria-hidden', 'false');

@@ -292,6 +292,10 @@ header h1 {
   color: rgb(144, 28, 28);
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 body {
   font-family: "DM Sans", sans-serif;
 }
