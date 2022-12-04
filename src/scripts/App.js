@@ -78,6 +78,17 @@ class App {
                     }
                 });
 
+                // Filter
+
+                // Default active filter
+                const filterActive = document.querySelector('.photographer__filter--active');
+                filterActive.innerText = 'Popularité';
+
+                // Filter select
+                const filterSelect = document.querySelector('.photographer__filter--select');
+                // Show select with option when event on click
+                filterSelect.addEventListener('click', () => showModalFilter());
+
                 // All Media data by Photographer
                 const mediaData = await this._mediaApi.getAllMediaByPhotographer(photographerID);
 
@@ -86,30 +97,23 @@ class App {
                     // Use Factory (manage media: Image or Video)
                     const Media = new MediaFactory(mediaData, 'PhotographerApi');
 
-                    console.log('===[ Media Photographer data ]===');
-                    console.log(Media);
+                    // Create initial all PhotographerCard (by Popularity)
+                    this.updateMedia(Media, 'Popularité');
 
-                    // Create all PhotographerCard
-                    Media.forEach((media) => {
-                        if (media instanceof Image) {
-                            const imageTemplate = new ImageCard(media);
-                            this.$mediaSection.appendChild(imageTemplate.createImageCard());
-                        } else if (media instanceof Video) {
-                            const videoTemplate = new VideoCard(media);
-                            this.$mediaSection.appendChild(videoTemplate.createVideoCard());
-                        }
-                    });
+                    // All options filter
+                    const filterPopularite = document.getElementById('filter-popularite');
+                    const filterDate = document.getElementById('filter-date');
+                    const filterTitre = document.getElementById('filter-titre');
+                    // On click option, replace active filter
+                    filterPopularite.addEventListener('click', () =>
+                        this.updateMedia(Media, 'Popularité'),
+                    );
+                    filterDate.addEventListener('click', () => this.updateMedia(Media, 'Date'));
+                    filterTitre.addEventListener('click', () => this.updateMedia(Media, 'Titre'));
                 } else {
                     // Error
                     this.alertError(messageError);
                 }
-
-                // Filter
-
-                // Filter select
-                const filterSelect = document.querySelector('.photographer__filter--select');
-                // Show select with option when event on click
-                filterSelect.addEventListener('click', () => showModalFilter());
             } else {
                 // Error
                 this.alertError(messageError);
@@ -118,6 +122,32 @@ class App {
             // Error
             this.alertError(messageError);
         }
+    }
+
+    // Update media by filter
+    updateMedia(Media, filter) {
+        // Change media with filter
+        const filterActive = document.querySelector('.photographer__filter--active');
+        filterActive.innerText = filter;
+        filterMedia(Media, filter);
+
+        console.log('===[ Media Photographer data ]===');
+        console.log('Filter by', filter);
+        console.log(Media);
+
+        // Reset content media section
+        this.$mediaSection.innerHTML = '';
+
+        // Create all PhotographerCard
+        Media.forEach((media) => {
+            if (media instanceof Image) {
+                const imageTemplate = new ImageCard(media);
+                this.$mediaSection.appendChild(imageTemplate.createImageCard());
+            } else if (media instanceof Video) {
+                const videoTemplate = new VideoCard(media);
+                this.$mediaSection.appendChild(videoTemplate.createVideoCard());
+            }
+        });
     }
 
     // Alert Error

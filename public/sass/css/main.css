@@ -349,6 +349,7 @@ h2 {
   margin: 0;
   margin-bottom: 30px;
   height: 60px;
+  user-select: none;
 }
 .photographer__filter--label {
   font-family: DM Sans;
@@ -357,6 +358,9 @@ h2 {
   line-height: 23px;
 }
 .photographer__filter--select {
+  width: 165px;
+  display: flex;
+  justify-content: space-between;
   gap: 25px;
 }
 .photographer__filter--menu {
@@ -365,21 +369,27 @@ h2 {
   flex-direction: column;
   align-items: flex-start;
   margin-top: 90px;
-  padding: 20px !important;
+  padding: 10px !important;
   z-index: 10;
 }
 .photographer__filter--menu .FE-button {
-  padding: 0;
+  width: 100%;
+  justify-content: flex-start;
+  padding: 10px;
+}
+.photographer__filter--menu .FE-button:hover {
+  background: rgb(211, 87, 60) !important;
 }
 .photographer__filter #filter-popularite {
   display: flex;
   gap: 25px;
+  padding: 10px;
 }
 .photographer__filter--separator {
   height: 1px;
   width: 150px;
   background-color: rgb(255, 255, 255);
-  margin: 10px -10px;
+  margin: 0 -5px;
 }
 .photographer__filter .FE-button:hover {
   background: rgb(144, 28, 28);
