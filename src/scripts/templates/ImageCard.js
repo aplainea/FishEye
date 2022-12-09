@@ -7,7 +7,7 @@ class ImageCard extends MediaCard {
         const article = document.createElement('article');
 
         const imageCard = `
-            <div class="photographer__portfolio--container">
+            <div id="${this._media.title}" class="photographer__portfolio--container">
                 <img src="../../../public/assets/medias/${this._media.photographerId}/${this._media.image}" alt="${this._media.title}" class="photographer__portfolio--img">
             </div>
             <div class="photographer__portfolio--subcontainer">

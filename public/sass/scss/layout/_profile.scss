@@ -132,6 +132,10 @@
     }
 
     &__portfolio {
+        &--container {
+            cursor: pointer;
+        }
+
         &--media {
             display: flex;
             flex-direction: row;

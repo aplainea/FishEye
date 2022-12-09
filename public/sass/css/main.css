@@ -465,6 +465,10 @@ form textarea {
   line-height: 83px;
   text-align: left;
 }
+.modal .error {
+  color: rgb(144, 28, 28);
+}
+
 .modal__contact--background {
   display: none;
   position: fixed;
@@ -476,18 +480,81 @@ form textarea {
   z-index: 10;
   background: rgba(196, 196, 196, 0.4);
 }
+.modal__contact--close {
+  cursor: pointer;
+}
 .modal__contact--submit {
   width: 170px;
   text-align: center;
   margin: 10px;
   margin-left: 0;
 }
-.modal .error {
-  color: rgb(144, 28, 28);
-}
 
-#contact_modal {
+.modal__lightbox {
+  width: calc(100% - 200px);
+  max-width: 1250px;
+  height: calc(100% - 140px);
+  max-height: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  margin-top: 130px;
+  padding: 35px;
+  border-radius: 5px;
+  border: none;
+  background-color: #db8876;
+  filter: drop-shadow(-5px 10px 30px rgba(0, 0, 0, 0.25));
+  z-index: 11;
+  background-color: rgb(255, 255, 255);
+}
+.modal__lightbox--background {
   display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  z-index: 10;
+  background: rgba(196, 196, 196, 0.4);
+}
+.modal__lightbox--container {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.modal__lightbox--subcontainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.modal__lightbox--close {
+  cursor: pointer;
+  margin-bottom: 400px;
+}
+.modal__lightbox--close path {
+  fill: rgb(144, 28, 28);
+}
+.modal__lightbox--arrowleft, .modal__lightbox--arrowright {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.modal__lightbox--arrowleft i, .modal__lightbox--arrowright i {
+  color: rgb(144, 28, 28);
+  font-size: 30px;
+}
+.modal__lightbox--media {
+  height: calc(100% - 35px);
+  width: calc(100% - 35px);
+  margin: 30px 30px 60px;
+  background-color: rgb(250, 250, 250);
 }
 
 .photographer__section {
@@ -600,6 +667,9 @@ form textarea {
 }
 .photographer__filter label {
   margin-right: 25px;
+}
+.photographer__portfolio--container {
+  cursor: pointer;
 }
 .photographer__portfolio--media {
   display: flex;

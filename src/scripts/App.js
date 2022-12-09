@@ -110,6 +110,28 @@ class App {
                     );
                     filterDate.addEventListener('click', () => this.updateMedia(Media, 'Date'));
                     filterTitre.addEventListener('click', () => this.updateMedia(Media, 'Titre'));
+
+                    // Show modal lightbox
+                    const modalLightBoxMedia = document.querySelectorAll(
+                        '.photographer__portfolio--container',
+                    );
+
+                    for (let i = 0; i < modalLightBoxMedia.length; i++) {
+                        // Show modal event on click
+                        modalLightBoxMedia[i].addEventListener('click', async () =>
+                            showModalLightBox(
+                                await this._mediaApi.getMediaByTitle(modalLightBoxMedia[i].id),
+                            ),
+                        );
+                        // Show modal event when "Entrer" press
+                        modalLightBoxMedia[i].addEventListener('keypress', async (e) => {
+                            if (e.key === 'Enter') {
+                                showModalLightBox(
+                                    await this._mediaApi.getMediaByTitle(modalLightBoxMedia[i].id),
+                                );
+                            }
+                        });
+                    }
                 } else {
                     // Error
                     this.alertError(messageError);

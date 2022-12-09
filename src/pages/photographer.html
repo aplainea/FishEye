@@ -183,6 +183,53 @@
             </dialog>
         </div>
 
+        <!-- Modal LightBox -->
+        <div class="modal__lightbox--background">
+            <dialog
+                id="modal__lightbox"
+                aria-hidden="true"
+                aria-label="Affiche un média en grand"
+                class="modal__lightbox"
+            >
+                <div class="modal__lightbox--container">
+                    <!-- Arrow next left -->
+                    <div class="modal__lightbox--arrowleft">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </div>
+                    <div class="modal__lightbox--media">
+                        <!-- Show the media here -->
+                    </div>
+                    <div class="modal__lightbox--subcontainer">
+                        <!-- Icon close modal -->
+                        <div aria-label="Bouton pour fermer la modale de lightbox">
+                            <svg
+                                class="modal__lightbox--close"
+                                width="42"
+                                height="42"
+                                viewBox="0 0 42 42"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <title>Fermer</title>
+                                <desc>Bouton pour fermer la modale de lightbox</desc>
+                                <path
+                                    d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z"
+                                    fill="white"
+                                />
+                            </svg>
+                        </div>
+                        <!-- Arrow next right -->
+                        <div class="modal__lightbox--arrowright">
+                            <i class="fa-solid fa-angle-right"></i>
+                        </div>
+                    </div>
+                    <div class="modal__lightbox--title">
+                        <!-- Title media here -->
+                    </div>
+                </div>
+            </dialog>
+        </div>
+
         <!-- JAVASCRIPT -->
         <!-- Factories -->
         <script src="../../src/scripts/factories/PhotographersFactory.js"></script>
@@ -206,6 +253,7 @@
         <script src="../../src/scripts/utils/ContactForm.js"></script>
         <script src="../../src/scripts/utils/Dropdown.js"></script>
         <script src="../../src/scripts/utils/FilterMedia.js"></script>
+        <script src="../../src/scripts/utils/LightBox.js"></script>
         <!-- Entry point -->
         <script src="../../src/scripts/App.js"></script>
     </body>
