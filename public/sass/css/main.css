@@ -465,7 +465,7 @@ form textarea {
   line-height: 83px;
   text-align: left;
 }
-.modal__background {
+.modal__contact--background {
   display: none;
   position: fixed;
   top: 0;
