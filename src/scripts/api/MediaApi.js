@@ -14,10 +14,10 @@ class MediaApi extends Api {
     }
 
     // get a photographer
-    async getMediaByTitle(mediatitle) {
+    async getMediaById(mediaid) {
         try {
             const data = await this.get();
-            return data.media.find((e) => e.title === mediatitle);
+            return data.media.find((e) => e.id == mediaid);
         } catch (error) {
             console.log(error);
         }

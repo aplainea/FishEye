@@ -42,6 +42,7 @@ class App {
     }
 
     // Photographer Page
+    // TODO: diviser en sous fonction
     async photographerPage() {
         // Get photographerID on URL
         const parametersURL = new URL(document.location).searchParams;
@@ -112,26 +113,6 @@ class App {
                     filterTitre.addEventListener('click', () => this.updateMedia(Media, 'Titre'));
 
                     // Show modal lightbox
-                    const modalLightBoxMedia = document.querySelectorAll(
-                        '.photographer__portfolio--container',
-                    );
-
-                    for (let i = 0; i < modalLightBoxMedia.length; i++) {
-                        // Show modal event on click
-                        modalLightBoxMedia[i].addEventListener('click', async () =>
-                            showModalLightBox(
-                                await this._mediaApi.getMediaByTitle(modalLightBoxMedia[i].id),
-                            ),
-                        );
-                        // Show modal event when "Entrer" press
-                        modalLightBoxMedia[i].addEventListener('keypress', async (e) => {
-                            if (e.key === 'Enter') {
-                                showModalLightBox(
-                                    await this._mediaApi.getMediaByTitle(modalLightBoxMedia[i].id),
-                                );
-                            }
-                        });
-                    }
                 } else {
                     // Error
                     this.alertError(messageError);
@@ -144,6 +125,20 @@ class App {
             // Error
             this.alertError(messageError);
         }
+    }
+
+    // Create Media Template
+    createMedia(Media) {
+        // Create all PhotographerCard
+        Media.forEach((media) => {
+            if (media instanceof Image) {
+                const imageTemplate = new ImageCard(media);
+                this.$mediaSection.appendChild(imageTemplate.createImageCard());
+            } else if (media instanceof Video) {
+                const videoTemplate = new VideoCard(media);
+                this.$mediaSection.appendChild(videoTemplate.createVideoCard());
+            }
+        });
     }
 
     // Update media by filter
@@ -160,15 +155,25 @@ class App {
         // Reset content media section
         this.$mediaSection.innerHTML = '';
 
-        // Create all PhotographerCard
-        Media.forEach((media) => {
-            if (media instanceof Image) {
-                const imageTemplate = new ImageCard(media);
-                this.$mediaSection.appendChild(imageTemplate.createImageCard());
-            } else if (media instanceof Video) {
-                const videoTemplate = new VideoCard(media);
-                this.$mediaSection.appendChild(videoTemplate.createVideoCard());
-            }
+        this.createMedia(Media);
+        const modalLightBoxMedia = document.querySelectorAll('.photographer__portfolio--container');
+        this.addClickEventForLightBoxMedia(modalLightBoxMedia, Media);
+    }
+
+    // For every media, add event listener click to show modal
+    addClickEventForLightBoxMedia(modalLightBoxMedia, Media) {
+        // For every media, add event listener click to show modal
+        modalLightBoxMedia.forEach((item) => {
+            // Show modal event on click
+            item.addEventListener('click', async () =>
+                showModalLightBox(await this._mediaApi.getMediaById(item.id), Media),
+            );
+            // Show modal event when "Entrer" press
+            item.addEventListener('keypress', async (e) => {
+                if (e.key === 'Enter') {
+                    showModalLightBox(await this._mediaApi.getMediaById(item.id), Media);
+                }
+            });
         });
     }
 

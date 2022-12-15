@@ -5,11 +5,13 @@ const mainLightBox = document.getElementById('main');
 const modalLightBox = document.getElementById('modal__lightbox');
 const modalBackgroundLightBox = document.querySelector('.modal__lightbox--background');
 const modalLightBoxClose = document.querySelector('.modal__lightbox--close');
+const modalLightBoxMedia = document.querySelector('.modal__lightbox--media');
+const modalLightBoxMediaTitle = document.querySelector('.modal__lightbox--title');
 
 ///--- FUNCTIONS
 
 // Show modal lightbox
-function showModalLightBox(media) {
+function showModalLightBox(media, MediaFilter) {
     // Disable scroll on body when modal is open
     bodyLightBox.classList.add('no-scroll');
     // Change attribute hidden
@@ -20,13 +22,32 @@ function showModalLightBox(media) {
     modalLightBox.style.display = 'block';
     modalBackgroundLightBox.style.display = 'block';
 
-    console.log(media);
+    // Create Template
 
-    // TODO:
-    // compare Image and Video
-    // innerHTML media on modal__lightbox--media
-    // add function next (left or right)
+    // Add title media
+    const title = `
+            <h2>${media.title}</h2>
+        `;
+    modalLightBoxMediaTitle.innerHTML = title;
+
+    // Compare Media if Image or Video, and add content
+    if (media.image) {
+        const content = `
+            <img src="../../../public/assets/medias/${media.photographerId}/${media.image}" alt="${media.title}" class="modal__lightbox--mediacontainer">
+        `;
+        modalLightBoxMedia.innerHTML = content;
+    } else if (media.video) {
+        const content = `
+            <video controls="controls" class="modal__lightbox--mediacontainer">
+                <source src="../../../public/assets/medias/${media.photographerId}/${media.video}" type="video/mp4">
+            </video>
+    `;
+        modalLightBoxMedia.innerHTML = content;
+    }
 }
+
+// TODO:
+// add function next (left or right)
 
 // Close modal lightbox
 function closeModalLightBox() {

@@ -70,8 +70,18 @@
         &--media {
             height: calc(100% - 35px);
             width: calc(100% - 35px);
-            margin: 30px 30px 60px;
-            background-color: $light;
+            margin: 15px 30px;
+        }
+
+        &--mediacontainer {
+            height: 700px;
+            width: 100%;
+            object-fit: contain;
+        }
+
+        &--title {
+            margin-left: 30px;
+            color: $primary;
         }
     }
 }
