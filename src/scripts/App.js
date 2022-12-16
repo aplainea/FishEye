@@ -89,6 +89,11 @@ class App {
                 const filterSelect = document.querySelector('.photographer__filter--select');
                 // Show select with option when event on click
                 filterSelect.addEventListener('click', () => showModalFilter());
+                filterSelect.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        showModalFilter();
+                    }
+                });
 
                 // All Media data by Photographer
                 const mediaData = await this._mediaApi.getAllMediaByPhotographer(photographerID);
@@ -109,8 +114,29 @@ class App {
                     filterPopularite.addEventListener('click', () =>
                         this.updateMedia(Media, 'Popularité'),
                     );
+                    filterPopularite.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') {
+                            this.updateMedia(Media, 'Popularité');
+                            closeModalFilterOptions();
+                            filterSelect.focus();
+                        }
+                    });
                     filterDate.addEventListener('click', () => this.updateMedia(Media, 'Date'));
+                    filterDate.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') {
+                            this.updateMedia(Media, 'Date');
+                            closeModalFilterOptions();
+                            filterSelect.focus();
+                        }
+                    });
                     filterTitre.addEventListener('click', () => this.updateMedia(Media, 'Titre'));
+                    filterTitre.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') {
+                            this.updateMedia(Media, 'Titre');
+                            closeModalFilterOptions();
+                            filterSelect.focus();
+                        }
+                    });
 
                     // Show modal lightbox
                 } else {
