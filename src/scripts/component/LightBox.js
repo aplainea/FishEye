@@ -11,7 +11,7 @@ const modalLightBoxMediaTitle = document.querySelector('.modal__lightbox--title'
 ///--- FUNCTIONS
 
 // Show modal lightbox
-function showModalLightBox(media, MediaFilter) {
+function showModalLightBox(media, arrayMedia) {
     // Disable scroll on body when modal is open
     bodyLightBox.classList.add('no-scroll');
     // Change attribute hidden
@@ -21,6 +21,9 @@ function showModalLightBox(media, MediaFilter) {
     // Show modal
     modalLightBox.style.display = 'block';
     modalBackgroundLightBox.style.display = 'block';
+
+    //console.log('showMedia', media);
+    //console.log('showMedia ARRAY', arrayMedia);
 
     // Create Template
 
@@ -44,10 +47,34 @@ function showModalLightBox(media, MediaFilter) {
     `;
         modalLightBoxMedia.innerHTML = content;
     }
+
+    // Add event listner
+    const modalLightBoxMediaNext = document.querySelector('.modal__lightbox--arrowright');
+    const modalLightBoxMediaPreview = document.querySelector('.modal__lightbox--arrowleft');
+    const currentMediaIndex = arrayMedia.findIndex((Media) => Media.id === media.id);
+    nextEvent(modalLightBoxMediaNext, arrayMedia, currentMediaIndex);
+    previewEvent(modalLightBoxMediaPreview, arrayMedia, currentMediaIndex);
 }
 
-// TODO:
-// add function next (left or right)
+// Switch to next media
+function nextModalLightBox(arrayMedia, currentMedia) {
+    let i = currentMedia;
+    i++;
+    i = i % arrayMedia.length;
+    console.log('NEXT', arrayMedia[i]);
+    return showModalLightBox(arrayMedia[i], arrayMedia);
+}
+
+// Switch to preview media
+function previewModalLightBox(arrayMedia, currentMedia) {
+    let i = currentMedia;
+    if (i === 0) {
+        i = arrayMedia.length;
+    }
+    i--;
+    console.log('PREVIEW', arrayMedia[i]);
+    return showModalLightBox(arrayMedia[i], arrayMedia);
+}
 
 // Close modal lightbox
 function closeModalLightBox() {
@@ -63,6 +90,32 @@ function closeModalLightBox() {
 }
 
 ///--- Event Listener
+
+function nextEvent(modalLightBoxMediaNext, arrayMedia, currentMediaIndex) {
+    // Next Media
+    modalLightBoxMediaNext.addEventListener(
+        'click',
+        nextModalLightBox(arrayMedia, currentMediaIndex),
+    );
+    modalLightBoxMediaNext.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            nextModalLightBox(arrayMedia, currentMediaIndex);
+        }
+    });
+}
+
+function previewEvent(modalLightBoxMediaPreview, arrayMedia, currentMediaIndex) {
+    // Preview Media
+    modalLightBoxMediaPreview.addEventListener(
+        'click',
+        previewModalLightBox(arrayMedia, currentMediaIndex),
+    );
+    modalLightBoxMediaPreview.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            previewModalLightBox(arrayMedia, currentMediaIndex);
+        }
+    });
+}
 
 // Close modal event
 modalLightBoxClose.addEventListener('click', closeModalLightBox);
