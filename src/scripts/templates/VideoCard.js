@@ -14,7 +14,10 @@ class VideoCard extends MediaCard {
             </div>
             <div class="photographer__portfolio--subcontainer">
                 <h2>${this._media.title}</h2>
-                <!-- like icon here -->
+                <div class="photographer__portfolio--likecontainer">
+                    <p class="photographer__portfolio--likenumber">${this._media.likes}</p>
+                    <i class="fa-solid fa-heart"></i>
+                </div>
             </div>
         `;
         article.innerHTML = videoCard;

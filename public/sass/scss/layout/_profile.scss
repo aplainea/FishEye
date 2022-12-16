@@ -156,12 +156,32 @@
         }
 
         &--subcontainer {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: space-between;
+
             h2 {
                 font-size: 24px;
                 font-weight: 400;
                 line-height: 31px;
                 color: $primary;
             }
+        }
+
+        &--likecontainer {
+            display: flex;
+            align-items: center;
+        }
+
+        &--likenumber {
+            font-family: DM Sans;
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 31px;
+            color: $primary;
+            margin-right: 5px;
         }
     }
 }

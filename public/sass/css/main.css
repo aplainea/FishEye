@@ -431,6 +431,10 @@ form textarea {
   resize: none;
 }
 
+.fa-heart {
+  color: rgb(144, 28, 28);
+}
+
 .modal {
   width: 670px;
   height: 975px;
@@ -694,11 +698,30 @@ form textarea {
   width: 350px;
   object-fit: cover;
 }
+.photographer__portfolio--subcontainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
 .photographer__portfolio--subcontainer h2 {
   font-size: 24px;
   font-weight: 400;
   line-height: 31px;
   color: rgb(144, 28, 28);
+}
+.photographer__portfolio--likecontainer {
+  display: flex;
+  align-items: center;
+}
+.photographer__portfolio--likenumber {
+  font-family: DM Sans;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 31px;
+  color: rgb(144, 28, 28);
+  margin-right: 5px;
 }
 
 /*# sourceMappingURL=main.css.map */
