@@ -62,7 +62,7 @@ function nextModalLightBox(arrayMedia, currentMedia) {
     i++;
     i = i % arrayMedia.length;
     console.log('NEXT', arrayMedia[i]);
-    return showModalLightBox(arrayMedia[i], arrayMedia);
+    return showModalLightBox(arrayMedia[i], arrayMedia); // TODO: need fix this infinity loop
 }
 
 // Switch to preview media
@@ -73,7 +73,7 @@ function previewModalLightBox(arrayMedia, currentMedia) {
     }
     i--;
     console.log('PREVIEW', arrayMedia[i]);
-    return showModalLightBox(arrayMedia[i], arrayMedia);
+    return showModalLightBox(arrayMedia[i], arrayMedia); // TODO: need fix this infinity loop
 }
 
 // Close modal lightbox

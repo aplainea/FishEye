@@ -30,10 +30,7 @@ class App {
             console.log(Photographers);
 
             // Create all PhotographerCard
-            Photographers.forEach((photographer) => {
-                const Template = new PhotographerCard(photographer);
-                this.$photographersSection.appendChild(Template.createPhotographerCard());
-            });
+            createAllPhotographerCard(Photographers, this.$photographersSection);
         } else {
             // Error
             const message = 'Erreur Data: problème pour récuperer les données.';
@@ -42,7 +39,6 @@ class App {
     }
 
     // Photographer Page
-    // TODO: diviser en sous fonction
     async photographerPage() {
         // Get photographerID on URL
         const parametersURL = new URL(document.location).searchParams;
@@ -65,19 +61,12 @@ class App {
                 console.log(Photographer);
 
                 // Create Photographer Page
-                const Template = new PhotographerPage(Photographer);
-                this.$photographerPage.innerHTML = Template.createPhotographerPage();
+                createGlobalPhotographerpage(Photographer, this.$photographerPage);
 
                 // Modal Contact
                 const modalContactButton = document.querySelector('.photographer__contact--btn');
-                // Show modal event on click
-                modalContactButton.addEventListener('click', () => showModalContact(Photographer));
-                // Show modal event when "Entrer" press
-                modalContactButton.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') {
-                        showModalContact(Photographer);
-                    }
-                });
+                // Add event listner on contact button
+                showModalEvent(modalContactButton, Photographer);
 
                 // Filter
 
@@ -87,13 +76,8 @@ class App {
 
                 // Filter select
                 const filterSelect = document.querySelector('.photographer__filter--select');
-                // Show select with option when event on click
-                filterSelect.addEventListener('click', () => showModalFilter());
-                filterSelect.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') {
-                        showModalFilter();
-                    }
-                });
+                // Add event listner on filter select
+                filterSelectEvent(filterSelect);
 
                 // All Media data by Photographer
                 const mediaData = await this._mediaApi.getAllMediaByPhotographer(photographerID);
@@ -104,39 +88,20 @@ class App {
                     const Media = new MediaFactory(mediaData, 'PhotographerApi');
 
                     // Create initial all PhotographerCard (by Popularity)
-                    this.updateMedia(Media, 'Popularité');
+                    updateMedia(Media, 'Popularité', this.$mediaSection, this._mediaApi);
 
                     // All options filter
                     const filterPopularite = document.getElementById('filter-popularite');
                     const filterDate = document.getElementById('filter-date');
                     const filterTitre = document.getElementById('filter-titre');
                     // On click option, replace active filter
-                    filterPopularite.addEventListener('click', () =>
-                        this.updateMedia(Media, 'Popularité'),
-                    );
-                    filterPopularite.addEventListener('keypress', (e) => {
-                        if (e.key === 'Enter') {
-                            this.updateMedia(Media, 'Popularité');
-                            closeModalFilterOptions();
-                            filterSelect.focus();
-                        }
-                    });
-                    filterDate.addEventListener('click', () => this.updateMedia(Media, 'Date'));
-                    filterDate.addEventListener('keypress', (e) => {
-                        if (e.key === 'Enter') {
-                            this.updateMedia(Media, 'Date');
-                            closeModalFilterOptions();
-                            filterSelect.focus();
-                        }
-                    });
-                    filterTitre.addEventListener('click', () => this.updateMedia(Media, 'Titre'));
-                    filterTitre.addEventListener('keypress', (e) => {
-                        if (e.key === 'Enter') {
-                            this.updateMedia(Media, 'Titre');
-                            closeModalFilterOptions();
-                            filterSelect.focus();
-                        }
-                    });
+
+                    // 'Popularité'
+                    this.filterEvent(filterPopularite, Media, 'Popularité');
+                    // 'Date'
+                    this.filterEvent(filterDate, Media, 'Date');
+                    // 'Titre'
+                    this.filterEvent(filterTitre, Media, 'Titre');
 
                     // Show modal lightbox
                 } else {
@@ -153,53 +118,17 @@ class App {
         }
     }
 
-    // Create Media Template
-    createMedia(Media) {
-        // Create all PhotographerCard
-        Media.forEach((media) => {
-            if (media instanceof Image) {
-                const imageTemplate = new ImageCard(media);
-                this.$mediaSection.appendChild(imageTemplate.createImageCard());
-            } else if (media instanceof Video) {
-                const videoTemplate = new VideoCard(media);
-                this.$mediaSection.appendChild(videoTemplate.createVideoCard());
+    // add event listner on filter by option
+    filterEvent(filter, Media, option) {
+        filter.addEventListener('click', () =>
+            updateMedia(Media, option, this.$mediaSection, this._mediaApi),
+        );
+        filter.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                updateMedia(Media, option, this.$mediaSection, this._mediaApi);
+                closeModalFilterOptions();
+                filterSelect.focus();
             }
-        });
-    }
-
-    // Update media by filter
-    updateMedia(Media, filter) {
-        // Change media with filter
-        const filterActive = document.querySelector('.photographer__filter--active');
-        filterActive.innerText = filter;
-        filterMedia(Media, filter);
-
-        console.log('===[ Media Photographer data ]===');
-        console.log('Filter by', filter);
-        console.log(Media);
-
-        // Reset content media section
-        this.$mediaSection.innerHTML = '';
-
-        this.createMedia(Media);
-        const modalLightBoxMedia = document.querySelectorAll('.photographer__portfolio--container');
-        this.addClickEventForLightBoxMedia(modalLightBoxMedia, Media);
-    }
-
-    // For every media, add event listener click to show modal
-    addClickEventForLightBoxMedia(modalLightBoxMedia, Media) {
-        // For every media, add event listener click to show modal
-        modalLightBoxMedia.forEach((item) => {
-            // Show modal event on click
-            item.addEventListener('click', async () =>
-                showModalLightBox(await this._mediaApi.getMediaById(item.id), Media),
-            );
-            // Show modal event when "Entrer" press
-            item.addEventListener('keypress', async (e) => {
-                if (e.key === 'Enter') {
-                    showModalLightBox(await this._mediaApi.getMediaById(item.id), Media);
-                }
-            });
         });
     }
 
@@ -211,24 +140,9 @@ class App {
         document.location.href = '/index.html';
     }
 }
-
 // Create App "FishEye"
 const app = new App();
 
 // Router
 const currentPage = document.location.pathname;
-// Default Error message
-const messageError = "Vous êtes perdu ? Retournons à l'accueil.\nCette URL n'existe pas.";
-switch (currentPage) {
-    // Home Page
-    case '/index.html':
-        app.homePage();
-        break;
-    // Photographer Page
-    case '/src/pages/photographer.html':
-        app.photographerPage();
-        break;
-    // Default page (if error, etc.) --> return to Home Page
-    default:
-        app.alertError(messageError);
-}
+router(app, currentPage);

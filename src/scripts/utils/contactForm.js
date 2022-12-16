@@ -173,6 +173,18 @@ function validationModalContact() {
 
 ///--- Event Listener
 
+// Event on show modal
+function showModalEvent(modalContactButton, Photographer) {
+    // Show modal event on click
+    modalContactButton.addEventListener('click', () => showModalContact(Photographer));
+    // Show modal event when "Entrer" press
+    modalContactButton.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            showModalContact(Photographer);
+        }
+    });
+}
+
 // Close modal event
 // Icon close
 modalContactClose.addEventListener('click', closeModalContact);

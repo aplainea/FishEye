@@ -16,3 +16,13 @@ function filterMedia(data, filter) {
     }
     return result;
 }
+
+function filterSelectEvent(filterSelect) {
+    // Show select with option when event on click
+    filterSelect.addEventListener('click', () => showModalFilter());
+    filterSelect.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            showModalFilter();
+        }
+    });
+}
