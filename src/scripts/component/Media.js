@@ -13,7 +13,7 @@ function createMedia(Media, mediaSection) {
 }
 
 // Update media by filter
-function updateMedia(Media, filter, mediaSection, mediaApi) {
+function updateMedia(Media, filter, mediaSection) {
     // Change media with filter
     const filterActive = document.querySelector('.photographer__filter--active');
     filterActive.innerText = filter;
@@ -28,22 +28,5 @@ function updateMedia(Media, filter, mediaSection, mediaApi) {
 
     createMedia(Media, mediaSection);
     const modalLightBoxMedia = document.querySelectorAll('.photographer__portfolio--container');
-    addClickEventForLightBoxMedia(modalLightBoxMedia, Media, mediaApi);
-}
-
-// For every media, add event listener click to show modal
-function addClickEventForLightBoxMedia(modalLightBoxMedia, Media, mediaApi) {
-    // For every media, add event listener click to show modal
-    modalLightBoxMedia.forEach((item) => {
-        // Show modal event on click
-        item.addEventListener('click', async () =>
-            showModalLightBox(await mediaApi.getMediaById(item.id), Media),
-        );
-        // Show modal event when "Entrer" press
-        item.addEventListener('keypress', async (e) => {
-            if (e.key === 'Enter') {
-                showModalLightBox(await mediaApi.getMediaById(item.id), Media);
-            }
-        });
-    });
+    addClickEventForLightBoxMedia(modalLightBoxMedia, Media);
 }

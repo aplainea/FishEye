@@ -1,126 +1,86 @@
-///--- DOM ELEMENTS
-const bodyLightBox = document.getElementById('body');
-const headerLightBox = document.getElementById('header');
-const mainLightBox = document.getElementById('main');
-const modalLightBox = document.getElementById('modal__lightbox');
-const modalBackgroundLightBox = document.querySelector('.modal__lightbox--background');
-const modalLightBoxClose = document.querySelector('.modal__lightbox--close');
-const modalLightBoxMedia = document.querySelector('.modal__lightbox--media');
-const modalLightBoxMediaTitle = document.querySelector('.modal__lightbox--title');
+// For every media, add event listener click to show modal
+function addClickEventForLightBoxMedia(modalLightBoxMedia, Media) {
+    // For every media, add event listener click to show modal
+    modalLightBoxMedia.forEach((item, index) => {
+        // Show modal event on click
+        item.addEventListener('click', async () => showModalLightBox(Media, index));
+        // Show modal event when "Entrer" press
+        item.addEventListener('keypress', async (e) => {
+            if (e.key === 'Enter') {
+                showModalLightBox(Media, index);
+            }
+        });
+    });
+}
 
-///--- FUNCTIONS
+// Show lightbox modal
+function showModalLightBox(array, index) {
+    const lightbox = new Lightbox(array, index);
+    //lightbox.closeLightbox();
+    lightbox.showLightbox();
+}
 
-// Show modal lightbox
-function showModalLightBox(media, arrayMedia) {
-    // Disable scroll on body when modal is open
-    bodyLightBox.classList.add('no-scroll');
-    // Change attribute hidden
-    headerLightBox.setAttribute('aria-hidden', 'true');
-    mainLightBox.setAttribute('aria-hidden', 'true');
-    modalLightBox.setAttribute('aria-hidden', 'false');
-    // Show modal
-    modalLightBox.style.display = 'block';
-    modalBackgroundLightBox.style.display = 'block';
-
-    //console.log('showMedia', media);
-    //console.log('showMedia ARRAY', arrayMedia);
-
-    // Create Template
-
-    // Add title media
-    const title = `
-            <h2>${media.title}</h2>
-        `;
-    modalLightBoxMediaTitle.innerHTML = title;
-
-    // Compare Media if Image or Video, and add content
-    if (media.image) {
-        const content = `
-            <img src="../../../public/assets/medias/${media.photographerId}/${media.image}" alt="${media.title}" class="modal__lightbox--mediacontainer">
-        `;
-        modalLightBoxMedia.innerHTML = content;
-    } else if (media.video) {
-        const content = `
-            <video controls="controls" class="modal__lightbox--mediacontainer">
-                <source src="../../../public/assets/medias/${media.photographerId}/${media.video}" type="video/mp4">
-            </video>
-    `;
-        modalLightBoxMedia.innerHTML = content;
-    }
-
-    // Add event listner
+// Manage Lightbox event: previous, next and close
+function manageLightbox(array) {
+    const modalLightBoxClose = document.querySelector('.modal__lightbox--close');
     const modalLightBoxMediaNext = document.querySelector('.modal__lightbox--arrowright');
     const modalLightBoxMediaPreview = document.querySelector('.modal__lightbox--arrowleft');
-    const currentMediaIndex = arrayMedia.findIndex((Media) => Media.id === media.id);
-    nextEvent(modalLightBoxMediaNext, arrayMedia, currentMediaIndex);
-    previewEvent(modalLightBoxMediaPreview, arrayMedia, currentMediaIndex);
-}
 
-// Switch to next media
-function nextModalLightBox(arrayMedia, currentMedia) {
-    let i = currentMedia;
-    i++;
-    i = i % arrayMedia.length;
-    console.log('NEXT', arrayMedia[i]);
-    return showModalLightBox(arrayMedia[i], arrayMedia); // TODO: need fix this infinity loop
-}
+    // Close Lightbox
+    modalLightBoxClose.addEventListener('click', () => manageCloseLightbox(array));
+    modalLightBoxClose.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            manageCloseLightbox(array);
+        }
+    });
 
-// Switch to preview media
-function previewModalLightBox(arrayMedia, currentMedia) {
-    let i = currentMedia;
-    if (i === 0) {
-        i = arrayMedia.length;
-    }
-    i--;
-    console.log('PREVIEW', arrayMedia[i]);
-    return showModalLightBox(arrayMedia[i], arrayMedia); // TODO: need fix this infinity loop
-}
-
-// Close modal lightbox
-function closeModalLightBox() {
-    // Remove disable scroll on body when modal is open
-    bodyLightBox.classList.remove('no-scroll');
-    // Change attribute hidden
-    headerLightBox.setAttribute('aria-hidden', 'false');
-    mainLightBox.setAttribute('aria-hidden', 'false');
-    modalLightBox.setAttribute('aria-hidden', 'true');
-    // Hidden modal
-    modalLightBox.style.display = 'none';
-    modalBackgroundLightBox.style.display = 'none';
-}
-
-///--- Event Listener
-
-function nextEvent(modalLightBoxMediaNext, arrayMedia, currentMediaIndex) {
-    // Next Media
-    modalLightBoxMediaNext.addEventListener(
-        'click',
-        nextModalLightBox(arrayMedia, currentMediaIndex),
-    );
+    // Next media
+    modalLightBoxMediaNext.addEventListener('click', () => manageNextMedia(array));
     modalLightBoxMediaNext.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
-            nextModalLightBox(arrayMedia, currentMediaIndex);
+            manageNextMedia(array);
         }
     });
-}
 
-function previewEvent(modalLightBoxMediaPreview, arrayMedia, currentMediaIndex) {
-    // Preview Media
-    modalLightBoxMediaPreview.addEventListener(
-        'click',
-        previewModalLightBox(arrayMedia, currentMediaIndex),
-    );
+    // Previous media
+    modalLightBoxMediaPreview.addEventListener('click', () => managePreviousMedia(array));
     modalLightBoxMediaPreview.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
-            previewModalLightBox(arrayMedia, currentMediaIndex);
+            managePreviousMedia(array);
         }
     });
 }
 
-// Close modal event
-modalLightBoxClose.addEventListener('click', closeModalLightBox);
-modalLightBoxClose.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        closeModalLightBox();
-    }
-});
+// Manage close lightbox
+function manageCloseLightbox(array) {
+    const modalLightBoxMedia = document.querySelector('.modal__lightbox--mediacontainer');
+    // get media id with data
+    let modalLightboxMediaId = modalLightBoxMedia.getAttribute('data');
+
+    // get array index of media by id
+    let arrayMediaIndex = array.findIndex((media) => media._id === modalLightboxMediaId);
+    const lightbox = new Lightbox(array, arrayMediaIndex);
+    lightbox.closeLightbox();
+}
+
+// Manage next lightbox
+function manageNextMedia(array) {
+    const modalLightBoxMedia = document.querySelector('.modal__lightbox--mediacontainer');
+    // get media id with data
+    let modalLightboxMediaId = modalLightBoxMedia.getAttribute('data');
+    // get array index of media by id
+    let arrayMediaIndex = array.findIndex((media) => media._id === modalLightboxMediaId);
+    const lightbox = new Lightbox(array, arrayMediaIndex);
+    lightbox.nextLightbox();
+}
+
+// Manage previous lightbox
+function managePreviousMedia(array) {
+    const modalLightBoxMedia = document.querySelector('.modal__lightbox--mediacontainer');
+    // get media id with data
+    let modalLightboxMediaId = modalLightBoxMedia.getAttribute('data');
+    // get array index of media by id
+    let arrayMediaIndex = array.findIndex((media) => media._id === modalLightboxMediaId);
+    const lightbox = new Lightbox(array, arrayMediaIndex);
+    lightbox.previousLightbox();
+}

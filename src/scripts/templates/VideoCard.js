@@ -23,4 +23,16 @@ class VideoCard extends MediaCard {
         article.innerHTML = videoCard;
         return article;
     }
+
+    createLightboxVideo() {
+        const modalLightBoxMedia = document.querySelector('.modal__lightbox--media');
+
+        const videoLighbox = `
+            <video controls="controls" class="modal__lightbox--mediacontainer" data="${this._media.id}">
+                <source src="../../../public/assets/medias/${this._media.photographerId}/${this._media.video}" type="video/mp4">
+            </video>    
+        `;
+
+        return (modalLightBoxMedia.innerHTML = videoLighbox);
+    }
 }

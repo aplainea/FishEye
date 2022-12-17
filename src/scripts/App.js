@@ -88,7 +88,7 @@ class App {
                     const Media = new MediaFactory(mediaData, 'PhotographerApi');
 
                     // Create initial all PhotographerCard (by Popularity)
-                    updateMedia(Media, 'Popularité', this.$mediaSection, this._mediaApi);
+                    updateMedia(Media, 'Popularité', this.$mediaSection);
 
                     // All options filter
                     const filterPopularite = document.getElementById('filter-popularite');
@@ -103,7 +103,8 @@ class App {
                     // 'Titre'
                     this.filterEvent(filterTitre, Media, 'Titre');
 
-                    // Show modal lightbox
+                    // manage lightbox: previous, next and close
+                    manageLightbox(Media);
                 } else {
                     // Error
                     this.alertError(messageError);
@@ -120,12 +121,10 @@ class App {
 
     // add event listner on filter by option
     filterEvent(filter, Media, option) {
-        filter.addEventListener('click', () =>
-            updateMedia(Media, option, this.$mediaSection, this._mediaApi),
-        );
+        filter.addEventListener('click', () => updateMedia(Media, option, this.$mediaSection));
         filter.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
-                updateMedia(Media, option, this.$mediaSection, this._mediaApi);
+                updateMedia(Media, option, this.$mediaSection);
                 closeModalFilterOptions();
                 filterSelect.focus();
             }

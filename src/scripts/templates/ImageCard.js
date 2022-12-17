@@ -21,4 +21,14 @@ class ImageCard extends MediaCard {
         article.innerHTML = imageCard;
         return article;
     }
+
+    createLightboxImage() {
+        const modalLightBoxMedia = document.querySelector('.modal__lightbox--media');
+
+        const imageLighbox = `
+            <img src="../../../public/assets/medias/${this._media.photographerId}/${this._media.image}" alt="${this._media.title}" class="modal__lightbox--mediacontainer" data="${this._media.id}">
+        `;
+
+        return (modalLightBoxMedia.innerHTML = imageLighbox);
+    }
 }
