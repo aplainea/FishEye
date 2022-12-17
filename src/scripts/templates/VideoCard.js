@@ -7,7 +7,7 @@ class VideoCard extends MediaCard {
         const article = document.createElement('article');
 
         const videoCard = `
-            <div id="${this._media.id}" class="photographer__portfolio--container">
+            <div id="${this._media.id}" class="photographer__portfolio--container" tabindex="0" aria-labelledby="media__video">
                 <video class="photographer__portfolio--video">
                     <source src="../../../public/assets/medias/${this._media.photographerId}/${this._media.video}" type="video/mp4">
                 </video>
@@ -16,7 +16,7 @@ class VideoCard extends MediaCard {
                 <h2>${this._media.title}</h2>
                 <div class="photographer__portfolio--likecontainer">
                     <p class="photographer__portfolio--likenumber">${this._media.likes}</p>
-                    <i class="fa-solid fa-heart"></i>
+                    <i class="fa-solid fa-heart" aria-label="Like le média"></i>
                 </div>
             </div>
         `;

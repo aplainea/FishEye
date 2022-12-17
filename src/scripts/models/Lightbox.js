@@ -11,6 +11,7 @@ class Lightbox {
         const mainLightBox = document.getElementById('main');
         const modalLightBox = document.getElementById('modal__lightbox');
         const modalBackgroundLightBox = document.querySelector('.modal__lightbox--background');
+        const modalLightBoxClose = document.querySelector('.modal__lightbox--close');
 
         // Disable scroll on body when modal is open
         bodyLightBox.classList.add('no-scroll');
@@ -23,6 +24,13 @@ class Lightbox {
         // Show modal
         modalLightBox.style.display = 'block';
         modalBackgroundLightBox.style.display = 'block';
+
+        // Lost current focus
+        const currentFocusElement = document.activeElement;
+        currentFocusElement.blur();
+
+        // Focus close button on lightbox modal
+        modalLightBoxClose.focus();
 
         // get media
         const media = this._array[this._position];
@@ -61,6 +69,16 @@ class Lightbox {
         // Hidden modal
         modalLightBox.style.display = 'none';
         modalBackgroundLightBox.style.display = 'none';
+
+        // Lost current focus
+        const currentFocusElement = document.activeElement;
+        currentFocusElement.blur();
+
+        // Focus first media
+        const allMedia = document.querySelectorAll('.photographer__portfolio--container');
+        if (allMedia.length > 0) {
+            allMedia[0].focus();
+        }
     }
 
     // Show next media on Lightbox

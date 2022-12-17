@@ -107,6 +107,9 @@
                     <!-- Modal header close -->
                     <div aria-label="Bouton pour fermer la modale de contact">
                         <svg
+                            role="img"
+                            tabindex="0"
+                            aria-describedby="Bouton pour fermer la modale de contact"
                             class="modal__contact--close"
                             width="42"
                             height="42"
@@ -193,7 +196,7 @@
             >
                 <div class="modal__lightbox--container">
                     <!-- Arrow next left -->
-                    <div class="modal__lightbox--arrowleft">
+                    <div class="modal__lightbox--arrowleft" role="button" tabindex="0">
                         <i class="fa-solid fa-angle-left"></i>
                     </div>
                     <div>
@@ -206,8 +209,14 @@
                     </div>
                     <div class="modal__lightbox--subcontainer">
                         <!-- Icon close modal -->
-                        <div aria-label="Bouton pour fermer la modale de lightbox">
+                        <div
+                            aria-label="Bouton pour fermer la modale de lightbox"
+                            aria-hidden="true"
+                        >
                             <svg
+                                role="img"
+                                tabindex="0"
+                                aria-describedby="Bouton pour fermer la modale de lightbox"
                                 class="modal__lightbox--close"
                                 width="42"
                                 height="42"
@@ -224,7 +233,7 @@
                             </svg>
                         </div>
                         <!-- Arrow next right -->
-                        <div class="modal__lightbox--arrowright">
+                        <div class="modal__lightbox--arrowright" role="button" tabindex="0">
                             <i class="fa-solid fa-angle-right"></i>
                         </div>
                     </div>
