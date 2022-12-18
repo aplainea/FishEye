@@ -7,6 +7,7 @@ function router(app, currentPage) {
         // Home Page
         case '/index.html':
         case '/FishEye/index.html':
+        case '/FishEye/':
             route = app.homePage();
             break;
         // Photographer Page
