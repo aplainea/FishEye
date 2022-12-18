@@ -1,5 +1,7 @@
+import { Lightbox } from '../models/Lightbox.js';
+
 // For every media, add event listener click to show modal
-function addClickEventForLightBoxMedia(modalLightBoxMedia, Media) {
+export function addClickEventForLightBoxMedia(modalLightBoxMedia, Media) {
     // For every media, add event listener click to show modal
     modalLightBoxMedia.forEach((item, index) => {
         // Show modal event on click
@@ -21,7 +23,7 @@ function showModalLightBox(array, index) {
 }
 
 // Manage Lightbox event: previous, next and close
-function manageLightbox(array) {
+export function manageLightbox(array) {
     const modalLightBoxClose = document.querySelector('.modal__lightbox--close');
     const modalLightBoxMediaNext = document.querySelector('.modal__lightbox--arrowright');
     const modalLightBoxMediaPreview = document.querySelector('.modal__lightbox--arrowleft');

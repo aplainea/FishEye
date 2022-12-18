@@ -37,3 +37,5 @@ class Photographer {
         return `public/assets/photographers/${this._portrait}`;
     }
 }
+
+export { Photographer };

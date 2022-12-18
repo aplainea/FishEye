@@ -53,7 +53,7 @@ function closeModalContact() {
 }
 
 // Validation form contact
-function validationFormContact(event) {
+export function validationFormContact(event) {
     // Stop default action of submit button
     event.preventDefault();
     // remove all actually error message
@@ -174,7 +174,7 @@ function validationModalContact() {
 ///--- Event Listener
 
 // Event on show modal
-function showModalEvent(modalContactButton, Photographer) {
+export function showModalEvent(modalContactButton, Photographer) {
     // Show modal event on click
     modalContactButton.addEventListener('click', () => showModalContact(Photographer));
     // Show modal event when "Entrer" press
@@ -187,9 +187,11 @@ function showModalEvent(modalContactButton, Photographer) {
 
 // Close modal event
 // Icon close
-modalContactClose.addEventListener('click', closeModalContact);
-modalContactClose.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        closeModalContact();
-    }
-});
+if (modalContactClose) {
+    modalContactClose.addEventListener('click', closeModalContact);
+    modalContactClose.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            closeModalContact();
+        }
+    });
+}

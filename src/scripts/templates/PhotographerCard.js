@@ -27,3 +27,5 @@ class PhotographerCard {
         return article;
     }
 }
+
+export { PhotographerCard };

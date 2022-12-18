@@ -19,7 +19,7 @@ class PhotographerPage {
                     </div>
                     <!-- Photographer avatar -->
                     <div class="photographer__page--avatar">
-                        <img src="${this._photographer.portrait}" alt="Portrait de ${this._photographer.name}">
+                        <img src="../../${this._photographer.portrait}" alt="Portrait de ${this._photographer.name}">
                     </div>
                 </div>
         `;
@@ -27,3 +27,5 @@ class PhotographerPage {
         return photographerPage;
     }
 }
+
+export { PhotographerPage };

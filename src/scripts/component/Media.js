@@ -1,3 +1,11 @@
+import { Image } from '../models/Image.js';
+import { Video } from '../models/Video.js';
+import { ImageCard } from '../templates/ImageCard.js';
+import { VideoCard } from '../templates/VideoCard.js';
+
+import { filterMedia } from '../utils/FilterMedia.js';
+import { addClickEventForLightBoxMedia } from './Lightbox.js';
+
 // Create Media Template
 function createMedia(Media, mediaSection) {
     // Create all PhotographerCard
@@ -13,7 +21,7 @@ function createMedia(Media, mediaSection) {
 }
 
 // Update media by filter
-function updateMedia(Media, filter, mediaSection) {
+export function updateMedia(Media, filter, mediaSection) {
     // Change media with filter
     const filterActive = document.querySelector('.photographer__filter--active');
     filterActive.innerText = filter;
@@ -29,6 +37,7 @@ function updateMedia(Media, filter, mediaSection) {
     createMedia(Media, mediaSection);
     const modalLightBoxMedia = document.querySelectorAll('.photographer__portfolio--container');
     addClickEventForLightBoxMedia(modalLightBoxMedia, Media);
+    manageLikes();
 }
 
 // Manage likes (click on like media)
@@ -51,8 +60,6 @@ function manageLikes() {
 // Manage number likes by media (add or reduce number)
 function manageNumberLikes(like) {
     const numberLikes = like.querySelector('.photographer__portfolio--likenumber');
-    console.log(like);
-    console.log(numberLikes);
     const totalLikes = document.getElementById('total-likes');
     // Add or remove the class "liked" to know if the media has been liked or not
     like.parentElement.classList.toggle('liked');

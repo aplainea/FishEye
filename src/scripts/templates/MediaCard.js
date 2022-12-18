@@ -3,3 +3,5 @@ class MediaCard {
         this._media = media;
     }
 }
+
+export { MediaCard };

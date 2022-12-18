@@ -1,3 +1,19 @@
+import { PhotographerApi } from './api/PhotographerApi.js';
+import { MediaApi } from './api/MediaApi.js';
+import { PhotographersFactory } from './factories/PhotographersFactory.js';
+import { MediaFactory } from './factories/MediaFactory.js';
+import { Likes } from './templates/Likes.js';
+
+import {
+    createAllPhotographerCard,
+    createGlobalPhotographerpage,
+} from './component/Photographer.js';
+import { showModalEvent, validationFormContact } from './utils/ContactForm.js';
+import { filterSelectEvent } from './utils/FilterMedia.js';
+import { updateMedia } from './component/Media.js';
+import { closeModalFilterOptions } from './utils/Dropdown.js';
+import { manageLightbox } from './component/Lightbox.js';
+
 class App {
     constructor() {
         // Section with all photographers profiles
@@ -5,12 +21,13 @@ class App {
         // Photographer's Page, with all the photographer's data
         this.$photographerPage = document.querySelector('.photographer__page');
         // Create PhotographerApi to get data Photographer
-        this._photographerApi = new PhotographerApi('src/data/photographers.json');
+        this._photographerApi = new PhotographerApi('./src/data/photographers.json');
+        this._photographerMediaApi = new PhotographerApi('../../src/data/photographers.json');
 
         // Section will all media by photographer
         this.$mediaSection = document.querySelector('.photographer__portfolio--media');
         // Create MediaApi to get data media
-        this._mediaApi = new MediaApi('src/data/photographers.json');
+        this._mediaApi = new MediaApi('../../src/data/photographers.json');
     }
 
     // Home Page
@@ -49,7 +66,9 @@ class App {
         // Check if ID
         if (photographerID) {
             // Get all photographers data
-            const photographerData = await this._photographerApi.getOnePhotographer(photographerID);
+            const photographerData = await this._photographerMediaApi.getOnePhotographer(
+                photographerID,
+            );
 
             // Check if we have photographer data
             if (photographerData) {
@@ -110,9 +129,6 @@ class App {
                     const asideLikes = document.querySelector('.aside-likes');
                     const asideTemplate = new Likes(Photographer, Media);
                     asideLikes.innerHTML = asideTemplate.createAsideLikes();
-
-                    // manage likes: add or reduce like for media
-                    manageLikes();
                 } else {
                     // Error
                     this.alertError(messageError);
@@ -144,8 +160,11 @@ class App {
         // Warning error message
         alert(message);
         // Return to Home Page
-        /*document.location.href = '/index.html';*/ // local url
-        document.location.href = '/FishEye/index.html';
+        if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+            document.location.href = '/index.html';
+        } else {
+            document.location.href = '/FishEye/index.html';
+        }
     }
 }
 // Create App "FishEye"

@@ -1,3 +1,5 @@
+import { MediaCard } from './MediaCard.js';
+
 class VideoCard extends MediaCard {
     constructor(media) {
         super(media);
@@ -9,7 +11,7 @@ class VideoCard extends MediaCard {
         const videoCard = `
             <div id="${this._media.id}" class="photographer__portfolio--container" tabindex="0" aria-labelledby="media__video">
                 <video class="photographer__portfolio--video">
-                    <source src="public/assets/medias/${this._media.photographerId}/${this._media.video}" type="video/mp4">
+                    <source src="../../public/assets/medias/${this._media.photographerId}/${this._media.video}" type="video/mp4">
                 </video>
             </div>
             <div class="photographer__portfolio--subcontainer">
@@ -29,10 +31,12 @@ class VideoCard extends MediaCard {
 
         const videoLighbox = `
             <video controls="controls" class="modal__lightbox--mediacontainer" data="${this._media.id}">
-                <source src="public/assets/medias/${this._media.photographerId}/${this._media.video}" type="video/mp4">
+                <source src="../../public/assets/medias/${this._media.photographerId}/${this._media.video}" type="video/mp4">
             </video>    
         `;
 
         return (modalLightBoxMedia.innerHTML = videoLighbox);
     }
 }
+
+export { VideoCard };

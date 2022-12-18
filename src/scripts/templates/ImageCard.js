@@ -1,3 +1,5 @@
+import { MediaCard } from './MediaCard.js';
+
 class ImageCard extends MediaCard {
     constructor(media) {
         super(media);
@@ -8,7 +10,7 @@ class ImageCard extends MediaCard {
 
         const imageCard = `
             <div id="${this._media.id}" class="photographer__portfolio--container" tabindex="0" aria-labelledby="media__image">
-                <img src="public/assets/medias/${this._media.photographerId}/${this._media.image}" alt="${this._media.title}" class="photographer__portfolio--img">
+                <img src="../../public/assets/medias/${this._media.photographerId}/${this._media.image}" alt="${this._media.title}" class="photographer__portfolio--img">
             </div>
             <div class="photographer__portfolio--subcontainer">
                 <h2>${this._media.title}</h2>
@@ -26,9 +28,11 @@ class ImageCard extends MediaCard {
         const modalLightBoxMedia = document.querySelector('.modal__lightbox--media');
 
         const imageLighbox = `
-            <img src="public/assets/medias/${this._media.photographerId}/${this._media.image}" alt="${this._media.title}" class="modal__lightbox--mediacontainer" data="${this._media.id}">
+            <img src="../../public/assets/medias/${this._media.photographerId}/${this._media.image}" alt="${this._media.title}" class="modal__lightbox--mediacontainer" data="${this._media.id}">
         `;
 
         return (modalLightBoxMedia.innerHTML = imageLighbox);
     }
 }
+
+export { ImageCard };

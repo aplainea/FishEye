@@ -1,3 +1,8 @@
+import { Image } from '../models/Image.js';
+import { Video } from '../models/Video.js';
+import { ImageCard } from '../templates/ImageCard.js';
+import { VideoCard } from '../templates/VideoCard.js';
+
 class Lightbox {
     constructor(array, position) {
         this._array = array;
@@ -154,3 +159,5 @@ class Lightbox {
         modalLightBoxMediaTitle.textContent = previousMedia._title;
     }
 }
+
+export { Lightbox };

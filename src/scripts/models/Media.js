@@ -27,3 +27,5 @@ class Media {
         return this._price;
     }
 }
+
+export { Media };

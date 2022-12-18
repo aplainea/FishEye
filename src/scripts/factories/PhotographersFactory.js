@@ -1,3 +1,5 @@
+import { Photographer } from '../models/Photographer.js';
+
 class PhotographersFactory {
     constructor(data, type) {
         // Photographer
@@ -8,3 +10,5 @@ class PhotographersFactory {
         }
     }
 }
+
+export { PhotographersFactory };

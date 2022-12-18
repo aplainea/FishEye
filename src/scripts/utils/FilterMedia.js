@@ -1,5 +1,7 @@
+import { showModalFilter } from './Dropdown.js';
+
 // Update show media by filter
-function filterMedia(data, filter) {
+export function filterMedia(data, filter) {
     let result;
     switch (filter) {
         case 'Popularité':
@@ -17,7 +19,7 @@ function filterMedia(data, filter) {
     return result;
 }
 
-function filterSelectEvent(filterSelect) {
+export function filterSelectEvent(filterSelect) {
     // Show select with option when event on click
     filterSelect.addEventListener('click', () => showModalFilter());
     filterSelect.addEventListener('keypress', (e) => {

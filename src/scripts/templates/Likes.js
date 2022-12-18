@@ -23,3 +23,5 @@ class Likes {
         return aside;
     }
 }
+
+export { Likes };

@@ -1,3 +1,5 @@
+import { Media } from './Media.js';
+
 class Image extends Media {
     constructor(data) {
         super(data);
@@ -8,3 +10,5 @@ class Image extends Media {
         return this._image;
     }
 }
+
+export { Image };

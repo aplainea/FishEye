@@ -1,3 +1,4 @@
+import { Api } from './Api.js';
 class MediaApi extends Api {
     constructor(url) {
         super(url);
@@ -23,3 +24,5 @@ class MediaApi extends Api {
         }
     }
 }
+
+export { MediaApi };
