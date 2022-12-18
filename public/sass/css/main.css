@@ -323,6 +323,23 @@ h2 {
   line-height: 46.87px;
 }
 
+.aside-likes {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  right: 30px;
+  width: 276px;
+  height: 70px;
+  background: rgb(211, 87, 60);
+  border-radius: 5px 5px 0 0;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 31px;
+  color: rgb(0, 0, 0);
+}
+
 .FE-button {
   display: flex;
   justify-content: center;
@@ -562,7 +579,7 @@ form textarea {
 .modal__lightbox--mediacontainer {
   height: 700px;
   width: 100%;
-  object-fit: contain;
+  border-radius: 10px;
 }
 .modal__lightbox--title {
   font-size: 24px;
@@ -698,6 +715,7 @@ form textarea {
   height: 300px;
   width: 350px;
   object-fit: cover;
+  border-radius: 10px;
 }
 .photographer__portfolio--subcontainer {
   max-width: 350px;
@@ -716,6 +734,11 @@ form textarea {
 .photographer__portfolio--likecontainer {
   display: flex;
   align-items: center;
+  cursor: pointer;
+}
+.photographer__portfolio--likecontainer:hover .photographer__portfolio--likenumber,
+.photographer__portfolio--likecontainer:hover .fa-heart {
+  color: rgb(211, 87, 60);
 }
 .photographer__portfolio--likenumber {
   font-family: DM Sans;

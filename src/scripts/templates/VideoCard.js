@@ -14,7 +14,7 @@ class VideoCard extends MediaCard {
             </div>
             <div class="photographer__portfolio--subcontainer">
                 <h2>${this._media.title}</h2>
-                <div class="photographer__portfolio--likecontainer">
+                <div class="photographer__portfolio--likecontainer" tabindex="0" aria-labelledby="media__video__likes">
                     <p class="photographer__portfolio--likenumber">${this._media.likes}</p>
                     <i class="fa-solid fa-heart" aria-label="Like le média"></i>
                 </div>

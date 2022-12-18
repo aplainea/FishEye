@@ -153,6 +153,7 @@
             height: 300px;
             width: 350px;
             object-fit: cover;
+            border-radius: 10px;
         }
 
         &--subcontainer {
@@ -174,6 +175,14 @@
         &--likecontainer {
             display: flex;
             align-items: center;
+            cursor: pointer;
+
+            &:hover {
+                .photographer__portfolio--likenumber,
+                .fa-heart {
+                    color: $secondary;
+                }
+            }
         }
 
         &--likenumber {

@@ -30,3 +30,46 @@ function updateMedia(Media, filter, mediaSection) {
     const modalLightBoxMedia = document.querySelectorAll('.photographer__portfolio--container');
     addClickEventForLightBoxMedia(modalLightBoxMedia, Media);
 }
+
+// Manage likes (click on like media)
+function manageLikes() {
+    const allLikes = document.querySelectorAll('.photographer__portfolio--likecontainer');
+
+    // For all likes, add event listner on click: to add or reduce total likes
+    allLikes.forEach((like) => {
+        like.addEventListener('click', () => {
+            manageNumberLikes(like);
+        });
+        like.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                manageNumberLikes(like);
+            }
+        });
+    });
+}
+
+// Manage number likes by media (add or reduce number)
+function manageNumberLikes(like) {
+    const numberLikes = like.querySelector('.photographer__portfolio--likenumber');
+    console.log(like);
+    console.log(numberLikes);
+    const totalLikes = document.getElementById('total-likes');
+    // Add or remove the class "liked" to know if the media has been liked or not
+    like.parentElement.classList.toggle('liked');
+
+    // Get current like and total likes
+    let currentLike = parseInt(numberLikes.textContent);
+    let totalPhotographerLikes = parseInt(totalLikes.textContent);
+
+    // manage to add or reduce current like
+    if (like.parentElement.classList.contains('liked')) {
+        currentLike++;
+        totalPhotographerLikes++;
+    } else {
+        currentLike--;
+        totalPhotographerLikes--;
+    }
+    // Switch with new number of likes
+    numberLikes.textContent = currentLike;
+    totalLikes.textContent = totalPhotographerLikes;
+}

@@ -105,6 +105,14 @@ class App {
 
                     // manage lightbox: previous, next and close
                     manageLightbox(Media);
+
+                    // aside info total likes
+                    const asideLikes = document.querySelector('.aside-likes');
+                    const asideTemplate = new Likes(Photographer, Media);
+                    asideLikes.innerHTML = asideTemplate.createAsideLikes();
+
+                    // manage likes: add or reduce like for media
+                    manageLikes();
                 } else {
                     // Error
                     this.alertError(messageError);
