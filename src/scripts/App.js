@@ -144,7 +144,8 @@ class App {
         // Warning error message
         alert(message);
         // Return to Home Page
-        document.location.href = '/index.html';
+        /*document.location.href = '/index.html';*/ // local url
+        document.location.href = '/FishEye/index.html';
     }
 }
 // Create App "FishEye"

@@ -6,10 +6,12 @@ function router(app, currentPage) {
     switch (currentPage) {
         // Home Page
         case '/index.html':
+        case '/FishEye/index.html':
             route = app.homePage();
             break;
         // Photographer Page
         case '/src/pages/photographer.html':
+        case '/FishEye/src/pages/photographer.html':
             route = app.photographerPage();
             break;
         // Default page (if error, etc.) --> return to Home Page
