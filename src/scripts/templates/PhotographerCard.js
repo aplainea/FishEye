@@ -9,7 +9,7 @@ class PhotographerCard {
         const photographerCard = `
         <!-- Photographer Card -->
         <div class="photographer__card">
-            <a href="../../../src/pages/photographer.html?id=${this._photographer.id}" aria-label="vers la page du photographe ${this._photographer.name}" class="photographer__card--link">
+            <a href="./src/pages/photographer.html?id=${this._photographer.id}" aria-label="vers la page du photographe ${this._photographer.name}" class="photographer__card--link">
                 <!-- Profile -->
                 <img src="${this._photographer.portrait}" alt="Portrait de ${this._photographer.name}" class="photographer__card--avatar">
                 <h2 class="photographer__card--name">${this._photographer.name}</h2>
