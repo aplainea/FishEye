@@ -5,12 +5,12 @@ class App {
         // Photographer's Page, with all the photographer's data
         this.$photographerPage = document.querySelector('.photographer__page');
         // Create PhotographerApi to get data Photographer
-        this._photographerApi = new PhotographerApi('../../src/data/photographers.json');
+        this._photographerApi = new PhotographerApi('src/data/photographers.json');
 
         // Section will all media by photographer
         this.$mediaSection = document.querySelector('.photographer__portfolio--media');
         // Create MediaApi to get data media
-        this._mediaApi = new MediaApi('../../src/data/photographers.json');
+        this._mediaApi = new MediaApi('src/data/photographers.json');
     }
 
     // Home Page
