@@ -16,8 +16,8 @@ function router(app, currentPage) {
             route = app.photographerPage();
             break;
         // Default page (if error, etc.) --> return to Home Page
-        default:
-            route = app.alertError(messageError);
+        // default:
+        //     route = app.alertError(messageError);
     }
     return route;
 }

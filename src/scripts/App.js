@@ -132,14 +132,17 @@ class App {
                 } else {
                     // Error
                     this.alertError(messageError);
+                    console.log('1');
                 }
             } else {
                 // Error
                 this.alertError(messageError);
+                console.log('2');
             }
         } else {
             // Error
             this.alertError(messageError);
+            console.log('3');
         }
     }
 
@@ -158,13 +161,14 @@ class App {
     // Alert Error
     alertError(message) {
         // Warning error message
-        alert(message);
-        // Return to Home Page
-        if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-            document.location.href = '/index.html';
-        } else {
-            document.location.href = '/FishEye/index.html';
-        }
+        console.log('error');
+        // alert(message);
+        // // Return to Home Page
+        // if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+        //     document.location.href = '/index.html';
+        // } else {
+        //     document.location.href = '/FishEye/index.html';
+        // }
     }
 }
 // Create App "FishEye"
@@ -172,4 +176,5 @@ const app = new App();
 
 // Router
 const currentPage = document.location.pathname;
+app.photographerPage();
 router(app, currentPage);

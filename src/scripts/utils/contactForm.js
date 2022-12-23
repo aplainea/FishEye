@@ -54,6 +54,7 @@ function closeModalContact() {
 
 // Validation form contact
 export function validationFormContact(event) {
+    console.log('test');
     // Stop default action of submit button
     event.preventDefault();
     // remove all actually error message
