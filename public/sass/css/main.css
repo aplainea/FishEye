@@ -323,6 +323,17 @@ h2 {
   line-height: 46.87px;
 }
 
+h3 {
+  font-size: 18px;
+  margin: 0;
+  font-weight: 400;
+}
+
+h4 {
+  font-weight: 400;
+  margin: 0;
+}
+
 .aside-likes {
   display: flex;
   justify-content: space-around;
@@ -695,7 +706,7 @@ form textarea {
   align-items: center;
   margin-top: 20px;
 }
-.photographer__filter label {
+.photographer__filter--label {
   margin-right: 25px;
 }
 .photographer__portfolio--container {

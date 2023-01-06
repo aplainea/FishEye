@@ -10,7 +10,7 @@ class PhotographerPage {
                     <!-- Photographer presentation -->
                     <div class="photographer__page--presentation">
                         <h1>${this._photographer.name}</h1>
-                        <p class="photographer__page--place">${this._photographer.place}</p>
+                        <h2 class="photographer__page--place">${this._photographer.place}</h2>
                         <p class="photographer__page--tagline">${this._photographer.tagline}</p>
                     </div>
                     <!-- Photographer contact -->
