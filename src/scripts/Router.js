@@ -15,9 +15,6 @@ function router(app, currentPage) {
         case '/FishEye/src/pages/photographer.html':
             route = app.photographerPage();
             break;
-        // Default page (if error, etc.) --> return to Home Page
-        // default:
-        //     route = app.alertError(messageError);
     }
     return route;
 }

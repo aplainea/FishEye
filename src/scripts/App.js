@@ -48,10 +48,6 @@ class App {
 
             // Create all PhotographerCard
             createAllPhotographerCard(Photographers, this.$photographersSection);
-        } else {
-            // Error
-            const message = 'Erreur Data: problème pour récuperer les données.';
-            this.alertError(message);
         }
     }
 
@@ -61,7 +57,8 @@ class App {
         const parametersURL = new URL(document.location).searchParams;
         const photographerID = parseInt(parametersURL.get('id'));
         // Init message error
-        const messageError = "Erreur: L'ID du photographe n'existe pas, ou n'est pas la bonne.";
+        const messageError =
+            "Erreur: L'ID du photographe n'existe pas, ou n'est pas la bonne (photographerPage).";
 
         // Check if ID
         if (photographerID) {
@@ -129,17 +126,8 @@ class App {
                     const asideLikes = document.querySelector('.aside-likes');
                     const asideTemplate = new Likes(Photographer, Media);
                     asideLikes.innerHTML = asideTemplate.createAsideLikes();
-                } else {
-                    // Error
-                    this.alertError(messageError);
                 }
-            } else {
-                // Error
-                this.alertError(messageError);
             }
-        } else {
-            // Error
-            this.alertError(messageError);
         }
     }
 
@@ -153,19 +141,6 @@ class App {
                 filterSelect.focus();
             }
         });
-    }
-
-    // Alert Error
-    alertError(message) {
-        // Warning error message
-        console.log('error', message);
-        // alert(message);
-        // Return to Home Page
-        if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-            document.location.href = '/index.html';
-        } else {
-            document.location.href = '/FishEye/index.html';
-        }
     }
 }
 // Create App "FishEye"
