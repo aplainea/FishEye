@@ -8,7 +8,7 @@ import {
     createAllPhotographerCard,
     createGlobalPhotographerpage,
 } from './component/Photographer.js';
-import { showModalEvent, validationFormContact } from './utils/ContactForm.js';
+import { showModalEvent } from './utils/ContactForm.js';
 import { filterSelectEvent } from './utils/FilterMedia.js';
 import { updateMedia } from './component/Media.js';
 import { closeModalFilterOptions } from './utils/Dropdown.js';
@@ -132,17 +132,14 @@ class App {
                 } else {
                     // Error
                     this.alertError(messageError);
-                    console.log('1');
                 }
             } else {
                 // Error
                 this.alertError(messageError);
-                console.log('2');
             }
         } else {
             // Error
             this.alertError(messageError);
-            console.log('3');
         }
     }
 
@@ -161,14 +158,14 @@ class App {
     // Alert Error
     alertError(message) {
         // Warning error message
-        console.log('error');
+        console.log('error', message);
         // alert(message);
-        // // Return to Home Page
-        // if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-        //     document.location.href = '/index.html';
-        // } else {
-        //     document.location.href = '/FishEye/index.html';
-        // }
+        // Return to Home Page
+        if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+            document.location.href = '/index.html';
+        } else {
+            document.location.href = '/FishEye/index.html';
+        }
     }
 }
 // Create App "FishEye"

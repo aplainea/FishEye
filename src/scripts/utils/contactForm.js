@@ -53,10 +53,8 @@ function closeModalContact() {
 }
 
 // Validation form contact
-export function validationFormContact(event) {
+function validationFormContact() {
     console.log('test');
-    // Stop default action of submit button
-    event.preventDefault();
     // remove all actually error message
     hiddenError();
 
@@ -182,6 +180,16 @@ export function showModalEvent(modalContactButton, Photographer) {
     modalContactButton.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             showModalContact(Photographer);
+        }
+    });
+}
+
+// Submit form contact event
+if (modalContactValidButton) {
+    modalContactValidButton.addEventListener('click', validationFormContact);
+    modalContactValidButton.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            validationFormContact();
         }
     });
 }

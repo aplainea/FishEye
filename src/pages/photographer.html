@@ -131,11 +131,7 @@
                     </div>
                 </header>
                 <!-- Modal form -->
-                <form
-                    id="modal__form--contact"
-                    name="Modal form contact"
-                    onsubmit="validationFormContact(event)"
-                >
+                <form id="modal__form--contact" name="Modal form contact">
                     <!-- firstname -->
                     <div id="firstname_data" aria-label="Prénom" class="formData input-control">
                         <label for="firstname">Prénom</label>
@@ -178,13 +174,14 @@
                         ></textarea>
                     </div>
                     <!-- submit -->
-                    <div aria-label="Envoyer">
-                        <input
-                            type="submit"
-                            value="Envoyer"
-                            id="valid-btn"
-                            class="modal__contact--submit FE-button"
-                        />
+                    <div
+                        id="valid-btn"
+                        role="button"
+                        tabindex="0"
+                        aria-label="Envoyer"
+                        class="modal__contact--submit FE-button"
+                    >
+                        Envoyer
                     </div>
                 </form>
             </dialog>
@@ -246,7 +243,6 @@
         </div>
 
         <!-- JAVASCRIPT -->
-        <script src="./../scripts/utils/ContactForm.js"></script>
         <script src="./../scripts/Router.js"></script>
         <script type="module" src="./../scripts/App.js"></script>
     </body>
