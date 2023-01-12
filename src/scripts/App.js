@@ -138,7 +138,7 @@ class App {
             if (e.key === 'Enter') {
                 updateMedia(Media, option, this.$mediaSection);
                 closeModalFilterOptions();
-                filterSelect.focus();
+                filter.focus();
             }
         });
     }
