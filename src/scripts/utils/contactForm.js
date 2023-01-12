@@ -54,7 +54,6 @@ function closeModalContact() {
 
 // Validation form contact
 function validationFormContact() {
-    console.log('test');
     // remove all actually error message
     hiddenError();
 
