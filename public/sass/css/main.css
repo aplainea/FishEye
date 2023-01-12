@@ -598,6 +598,17 @@ form textarea {
   color: rgb(144, 28, 28);
 }
 
+/* Manage height media */
+@media (max-height: 1000px) {
+  .modal__lightbox--mediacontainer {
+    height: 500px;
+  }
+}
+@media (max-height: 750px) {
+  .modal__lightbox--mediacontainer {
+    height: 300px;
+  }
+}
 .photographer__section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
